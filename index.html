@@ -604,7 +604,7 @@
                         pAnalysis.id = `p-analysis-${pNum}`;
                         pAnalysis.className = "teacher-p-analysis";
                         pAnalysis.style.textIndent = "0";
-                        pAnalysis.innerHTML = `<strong>🔍 第 pNum段文本赏析：</strong>{lessonTeacherAnalysis.paragraphs[pNum]}`;
+                        pAnalysis.innerHTML = `<strong>🔍 第 ${pNum} 段文本赏析：</strong>${lessonTeacherAnalysis.paragraphs[pNum]}`;
                         
                         pAnalysis.style.display = isTeacherMode ? "block" : "none";
                         cnt.appendChild(pAnalysis);
@@ -626,7 +626,7 @@
                             r.classList.add('is-active'); 
                             openPop(e.currentTarget, i);
                         };
-                        r.innerHTML = `d[0]<rt>{d[1]}</rt>`; 
+                        r.innerHTML = `${d[0]}<rt>${d[1]}</rt>`; 
                         p.appendChild(r);
                     }
                 });
@@ -1082,4 +1082,3 @@
     </script>
 </body>
 </html>
-
