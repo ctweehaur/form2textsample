@@ -3,37 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>华文智能互动学习阅读器 - 宣纸古铜金水墨风</title>
+    <title>华文智能互动学习阅读器 - 宣纸蓝青水墨风</title>
     <style>
         /* ==========================================================================
-           📜 宣纸底色 × 古铜金温润水墨风配色系统 (Xuan Paper & Amber Gold Theme)
+           📜 宣纸底色 × 蓝色与青色水墨风配色系统 (Xuan Paper, Blue & Cyan Theme)
            ========================================================================== */
 
         :root {
-            /* 📜 日间模式：古籍宣纸微黄底色，极度护眼、温润舒适 */
+            /* 📜 日间模式：古籍宣纸微黄底色，护眼温润 */
             --bg-color: #f7f4eb;
             --bg-gradient: radial-gradient(circle at top right, #faf8f2 0%, #ede6d6 100%);
             --text-color: #1c1c1c;         /* 浓墨炭黑，清晰锐利 */
             --text-muted: #5c554b;         /* 淡墨辅助字 */
             --card-bg: #fffcf7;          /* 仿宣纸白卡片 */
             
-            /* 🏺 核心主色调与点睛色：温润古铜金（按钮、核心强调、选中态） */
-            --primary-color: #b45309;
-            --primary-hover: #92400e;
+            /* 🔵 核心主色调：科技蓝（按钮、核心强调、提交、选中态） */
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
 
-            /* 🟤 生词本专用色：古铜墨褐底深棕字 */
-            --notebook-color: #78350f;
-            --notebook-bg: #fef3c7;
+            /* 💧 生词本专用色：天青蓝底深蓝字 */
+            --notebook-color: #0369a1;
+            --notebook-bg: #e0f2fe;
 
-            /* 🖋️ 文本赏析专用色：远山青黛墨色 */
-            --ai-color: #0f5257;
-            --ai-bg: #eaf4f4;
+            /* 🌊 文本赏析专用色：远山青黛墨色 */
+            --ai-color: #0f766e;
+            --ai-bg: #e6f6f6;
 
-            /* 🟫 正确/成功提示色：古铜金 */
-            --accent-color: #b45309;
-            --accent-bg: #fef3c7;
+            /* 🩵 正确/成功提示色：清爽远山青 */
+            --accent-color: #0d9488;
+            --accent-bg: #ccfbf1;
 
-            --ruby-color: #92400e;         /* 拼音：温润古铜金 */
+            --ruby-color: #92400e;         /* 拼音：古铜金，与蓝青形成雅致对比 */
             --input-border: #d4c5a9;       /* 宣纸质感边框 */
             --shadow-sm: 0 4px 6px -1px rgba(60, 50, 40, 0.06), 0 2px 4px -1px rgba(60, 50, 40, 0.03);
             --shadow-md: 0 15px 30px -5px rgba(60, 50, 40, 0.08), 0 8px 10px -6px rgba(60, 50, 40, 0.04);
@@ -41,27 +41,27 @@
             --radius-md: 10px;
         }
 
-        /* 🌙 暗黑模式：深夜墨纸配星光暖金（极其柔和护眼） */
+        /* 🌙 暗黑模式：深空墨蓝色底配柔和亮青蓝 */
         [data-theme="dark"] {
-            --bg-color: #121619;
-            --bg-gradient: radial-gradient(circle at top right, #1a2126 0%, #121619 100%);
-            --text-color: #f3f0e6;         /* 仿宣纸米白字 */
-            --text-muted: #a39e93;
-            --card-bg: #192025;            /* 深夜墨纸卡片底 */
+            --bg-color: #0f172a;
+            --bg-gradient: radial-gradient(circle at top right, #1e293b 0%, #0f172a 100%);
+            --text-color: #f1f5f9;         /* 柔和米白字 */
+            --text-muted: #94a3b8;
+            --card-bg: #1e293b;            /* 深空墨蓝卡片底 */
             
-            --primary-color: #fbbf24;      /* 温润星光金，绝不刺眼 */
-            --primary-hover: #f59e0b;
+            --primary-color: #60a5fa;      /* 优雅的星光科技蓝 */
+            --primary-hover: #93c5fd;
             
-            --notebook-color: #fcd34d;
-            --notebook-bg: rgba(252, 211, 77, 0.12);
+            --notebook-color: #38bdf8;
+            --notebook-bg: rgba(56, 189, 248, 0.12);
 
-            --ai-color: #5eead4;       /* 亮青黛 */
-            --ai-bg: #0e2a2d;          /* 深空青幽底 */
+            --ai-color: #2dd4bf;       /* 亮青色 */
+            --ai-bg: #13343b;          /* 深空青幽底 */
 
-            --accent-color: #fbbf24;
-            --accent-bg: rgba(251, 191, 36, 0.12);
+            --accent-color: #2dd4bf;
+            --accent-bg: rgba(45, 212, 191, 0.15);
             --ruby-color: #fbbf24;
-            --input-border: #3b464f;
+            --input-border: #334155;
             --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
             --shadow-md: 0 15px 30px -5px rgba(0, 0, 0, 0.6);
         }
@@ -82,10 +82,10 @@
             background: #b5a484;
         }
         [data-theme="dark"] ::-webkit-scrollbar-thumb {
-            background: #3b464f;
+            background: #334155;
         }
         [data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
-            background: #4f5d68;
+            background: #475569;
         }
 
         body {
@@ -157,7 +157,7 @@
         }
 
         .clear-btn {
-            background: #78350f;
+            background: #2563eb;
             color: white;
             border: none;
             padding: 5px 14px;
@@ -183,12 +183,12 @@
             font-size: 14px;
             font-weight: 700;
             cursor: pointer;
-            border: 1px solid rgba(120, 53, 15, 0.25);
+            border: 1px solid rgba(3, 105, 161, 0.25);
             transition: all 0.2s;
         }
 
         .notebook-item:hover {
-            background: var(--primary-color);
+            background: var(--notebook-color);
             color: white;
             transform: translateY(-1px);
         }
@@ -232,12 +232,12 @@
             transition: all 0.2s;
         }
         .quiz-opt-btn:hover {
-            background: rgba(180, 83, 9, 0.06) !important;
+            background: rgba(37, 99, 235, 0.06) !important;
             border-color: var(--primary-color) !important;
             color: var(--primary-color) !important;
         }
-        .quiz-opt-btn.correct { background: var(--primary-color) !important; color: white !important; border-color: var(--primary-color); }
-        .quiz-opt-btn.wrong { background: #5c554b !important; color: white !important; border-color: #5c554b; cursor: not-allowed; }
+        .quiz-opt-btn.correct { background: var(--accent-color) !important; color: white !important; border-color: var(--accent-color); }
+        .quiz-opt-btn.wrong { background: #64748b !important; color: white !important; border-color: #64748b; cursor: not-allowed; }
 
         #quizQuestion {
             font-size: 40px;
@@ -290,8 +290,8 @@
         }
 
         ruby { ruby-position: over; cursor: pointer; padding: 0 2px; border-radius: 4px; transition: all 0.2s ease; }
-        ruby:hover, ruby.is-active { background: #fef3c7; color: #b45309; }
-        [data-theme="dark"] ruby:hover, [data-theme="dark"] ruby.is-active { background: #3e2723; color: #fbbf24; }
+        ruby:hover, ruby.is-active { background: #e0f2fe; color: #0284c7; }
+        [data-theme="dark"] ruby:hover, [data-theme="dark"] ruby.is-active { background: #1e3a8a; color: #60a5fa; }
 
         #content rt {
             opacity: 0;
@@ -339,7 +339,7 @@
         /* 选择题按钮状态 */
         .quiz-choice-btn { background: var(--card-bg) !important; color: var(--text-color) !important; border: 1px solid var(--input-border) !important; font-weight: 600; transition: all 0.15s ease !important; }
         .quiz-choice-btn.selected { background: var(--accent-bg) !important; border: 2px solid var(--primary-color) !important; color: var(--primary-color) !important; font-weight: 800 !important; }
-        .quiz-choice-btn.correct-answer-hint { background: var(--primary-color) !important; border: 2px solid var(--primary-color) !important; color: white !important; font-weight: 800 !important; }
+        .quiz-choice-btn.correct-answer-hint { background: var(--accent-color) !important; border: 2px solid var(--accent-color) !important; color: white !important; font-weight: 800 !important; }
 
         /* 简答题文本框样式 */
         .essay-textarea {
@@ -361,7 +361,7 @@
         .essay-textarea:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(180, 83, 9, 0.15);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
         }
 
         /* 简答题参考答案容器 */
@@ -370,15 +370,15 @@
             margin-top: 10px;
             padding: 14px;
             background: var(--accent-bg);
-            border-left: 4px solid var(--primary-color);
+            border-left: 4px solid var(--accent-color);
             border-radius: var(--radius-md);
             font-size: 14px;
             font-weight: 600;
-            color: var(--primary-color);
+            color: var(--accent-color);
             line-height: 1.7;
         }
 
-        /* 🌟 文本赏析与考点解析（温润古铜金水墨风） */
+        /* 🌟 文本赏析与考点解析（蓝青水墨风） */
         .teacher-p-analysis, [id^="q-analysis-"], [id^="essay-analysis-"] {
             background: var(--ai-bg) !important;
             border-left: 4px solid var(--ai-color) !important;
@@ -391,7 +391,7 @@
             border: 1px solid var(--input-border);
         }
         [data-theme="dark"] .teacher-p-analysis, [data-theme="dark"] [id^="q-analysis-"], [data-theme="dark"] [id^="essay-analysis-"] {
-            color: #fbbf24 !important;
+            color: #2dd4bf !important;
         }
 
         #teacherArticleAnalysis {
@@ -405,7 +405,7 @@
             border: 1px solid var(--input-border);
         }
         [data-theme="dark"] #teacherArticleAnalysis {
-            color: #fbbf24 !important;
+            color: #2dd4bf !important;
         }
 
         @media (max-width: 1024px) {
@@ -469,7 +469,7 @@
                 <button id="showCorrectBtn" onclick="revealRealCorrectAnswers()" style="display: none; padding: 12px 32px; background: var(--primary-color); color: white; border: none; border-radius: 25px; font-size: 15px; font-weight: 800; cursor: pointer;">
                     查看客观题答案 👁️
                 </button>
-                <div id="quizResultScore" style="margin-top: 15px; font-size: 17px; font-weight: 800; color: var(--primary-color); display: none; line-height: 1.6;"></div>
+                <div id="quizResultScore" style="margin-top: 15px; font-size: 17px; font-weight: 800; color: var(--accent-color); display: none; line-height: 1.6;"></div>
             </div>
 
             <div style="margin-top: 40px; padding-top: 25px; border-top: 3px solid var(--input-border);">
@@ -843,9 +843,9 @@
                         btn.style.fontWeight = "800";
                     }
                     if (btn === selectedBtn && studentLetter !== q.answer) {
-                        btn.style.background = "#5c554b";
+                        btn.style.background = "#4b5563";
                         btn.style.color = "white";
-                        btn.style.borderColor = "#5c554b";
+                        btn.style.borderColor = "#4b5563";
                         if (!btn.innerText.includes("  (❌️)")) btn.innerText += "  (❌️)";
                     }
                 });
@@ -855,7 +855,7 @@
 
             const resultBox = document.getElementById('quizResultScore');
             resultBox.style.display = "block";
-            resultBox.innerHTML = `🎉 客观题得分：<span style="font-size: 22px; color: var(--primary-color); font-weight: 800;">${score}</span> / ${totalQuestions} 分`;
+            resultBox.innerHTML = `🎉 客观题得分：<span style="font-size: 22px; color: var(--accent-color); font-weight: 800;">${score}</span> / ${totalQuestions} 分`;
             
             document.getElementById('submitQuizBtn').style.display = "none";
             document.getElementById('retryQuizBtn').style.display = "inline-block";
@@ -989,7 +989,7 @@
             saved = []; 
             renderNB(); 
             document.getElementById('gameContainer').style.display = 'none'; 
-            document.getElementById('gameToggleBtn').innerText = "🎯 生词测试"; 
+            document.getElementById('gameToggleBtn').innerText = "🎯生词测试"; 
         }
 
         function toggleGameMode() { 
