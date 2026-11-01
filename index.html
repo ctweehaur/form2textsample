@@ -107,14 +107,12 @@
             width: 100%;
             max-width: 1400px;
             margin-bottom: 25px;
-            transition: all 0.3s ease;
         }
 
         .control-panel {
             display: flex;
             gap: 14px;
             margin-bottom: 18px;
-            flex-wrap: wrap;
         }
 
         .control-panel button {
@@ -146,7 +144,6 @@
             box-shadow: var(--shadow-md);
             box-sizing: border-box;
             border: 1px solid var(--input-border);
-            transition: all 0.3s ease;
         }
 
         .notebook-title {
@@ -204,7 +201,6 @@
             width: 100%;
             max-width: 1400px;
             align-items: start;
-            transition: all 0.3s ease;
         }
 
         /* 生词测试弹窗区 */
@@ -261,7 +257,6 @@
             border: 1px solid var(--input-border);
             max-height: 82vh;
             overflow-y: auto;
-            transition: max-height 0.3s ease;
         }
 
         /* 右侧题目卡片 */
@@ -276,7 +271,6 @@
             max-height: 82vh;
             overflow-y: auto;
             display: none;
-            transition: max-height 0.3s ease;
         }
 
         h1 { text-align: center; font-size: 32px; font-weight: 800; margin-top: 0; margin-bottom: 35px; letter-spacing: 2px; font-family: "KaiTi", "STKaiti", serif; }
@@ -342,7 +336,7 @@
         .pop-btn-copy:hover { opacity: 0.9; }
         .pop-arrow { position: absolute; bottom: -8px; left: 50%; width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 8px solid var(--card-bg); transform: translateX(-50%); }
 
-        /* 🔘 客观选择题选项按钮样式 */
+        /* 🔘 客观选择题选项按钮样式（已修复 hover 悬停效果） */
         .quiz-choice-btn { 
             background: var(--card-bg) !important; 
             color: var(--text-color) !important; 
@@ -445,15 +439,14 @@
 <body>
 
     <!-- 顶栏操作区 -->
-    <div id="topContainer" class="top-container">
+    <div class="top-container">
         <div class="control-panel">
             <button id="themeToggleBtn" onclick="toggleTheme()">🌓 切换主题</button>
             <button id="gameToggleBtn" onclick="toggleGameMode()">🎯 生词测试</button>
             <button id="teacherToggleBtn" onclick="toggleTeacherMode()" style="background: var(--primary-color); color: #fff; border: none;">👁️ 文本赏析</button>
-            <button id="focusToggleBtn" onclick="toggleFocusMode()" style="background: #475569; color: #fff; border: none;">📖 专注模式</button>
         </div>
 
-        <div id="vocabNotebookCard" class="vocab-notebook">
+        <div class="vocab-notebook">
             <div class="notebook-title">
                 <span>📖 我的生词本</span>
                 <button class="clear-btn" onclick="forceClearNotebook()">清空本子 🗑️</button>
@@ -536,7 +529,6 @@
         let currentQuizIdx = 0;
         let isLocked = false;
         let isTeacherMode = false;
-        let isFocusMode = false;
         let userSelectedAnswers = {};
 
         window.onload = function() {
@@ -559,35 +551,6 @@
                 document.querySelectorAll('ruby').forEach(r => r.classList.remove('is-active'));
             });
         };
-
-        function toggleFocusMode() {
-            isFocusMode = !isFocusMode;
-            const focusBtn = document.getElementById('focusToggleBtn');
-            const notebookCard = document.getElementById('vocabNotebookCard');
-            const articleCard = document.querySelector('.article-card');
-            const quizSideCard = document.querySelector('.quiz-side-card');
-
-            if (isFocusMode) {
-                focusBtn.innerText = "🖥️ 退出专注";
-                notebookCard.style.opacity = "0";
-                notebookCard.style.transform = "translateY(-10px)";
-                setTimeout(() => { notebookCard.style.display = "none"; }, 250);
-
-                // 扩展双栏高度及最大高度，进入沉浸式阅读
-                if (articleCard) articleCard.style.maxHeight = "88vh";
-                if (quizSideCard && quizSideCard.style.display === "block") quizSideCard.style.maxHeight = "88vh";
-            } else {
-                focusBtn.innerText = "📖 专注模式";
-                notebookCard.style.display = "block";
-                setTimeout(() => {
-                    notebookCard.style.opacity = "1";
-                    notebookCard.style.transform = "translateY(0)";
-                }, 10);
-
-                if (articleCard) articleCard.style.maxHeight = "82vh";
-                if (quizSideCard && quizSideCard.style.display === "block") quizSideCard.style.maxHeight = "82vh";
-            }
-        }
 
         function render() {
             const cnt = document.getElementById('content'); 
@@ -641,7 +604,7 @@
                         pAnalysis.id = `p-analysis-${pNum}`;
                         pAnalysis.className = "teacher-p-analysis";
                         pAnalysis.style.textIndent = "0";
-                        pAnalysis.innerHTML = `<strong>🔍 第 ${pNum} 段文本赏析：</strong>${lessonTeacherAnalysis.paragraphs[pNum]}`;
+                        pAnalysis.innerHTML = `<strong>🔍 第 pNum段文本赏析：</strong>{lessonTeacherAnalysis.paragraphs[pNum]}`;
                         
                         pAnalysis.style.display = isTeacherMode ? "block" : "none";
                         cnt.appendChild(pAnalysis);
@@ -663,7 +626,7 @@
                             r.classList.add('is-active'); 
                             openPop(e.currentTarget, i);
                         };
-                        r.innerHTML = `${d[0]}<rt>${d[1]}</rt>`; 
+                        r.innerHTML = `d[0]<rt>{d[1]}</rt>`; 
                         p.appendChild(r);
                     }
                 });
@@ -1119,3 +1082,4 @@
     </script>
 </body>
 </html>
+
