@@ -3,28 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>华文智能互动学习阅读器 - 精英版</title>
+    <title>华文智能互动学习阅读器 - 高对比度清晰版</title>
     <style>
         /* ==========================================================================
-           🎨 现代华文学习平台全局样式 - 2026 旗舰美学版
+           🎨 高对比度清晰版色彩系统 (High-Contrast Color System)
            ========================================================================== */
 
         :root {
-            --bg-color: #f8fafc;
-            --bg-gradient: radial-gradient(circle at top right, #f1f5f9 0%, #e2e8f0 100%);
-            --text-color: #1e293b;
-            --text-muted: #64748b;
+            /* ☀️ 日间模式：高对比度、清晰锐利、温润护眼 */
+            --bg-color: #fdfbf7;
+            --bg-gradient: radial-gradient(circle at top right, #fffdfa 0%, #f1eddf 100%);
+            --text-color: #111827;         /* 加深到接近纯黑，极大提升清晰度 */
+            --text-muted: #4b5563;         /* 辅助文字加深，告别过浅看不清的问题 */
             --card-bg: #ffffff;
-            --primary-color: #3b82f6;
-            --primary-hover: #2563eb;
-            --accent-color: #10b981;
-            --accent-bg: #ecfdf5;
-            --ai-color: #8b5cf6;
-            --ai-bg: #f5f3ff;
-            --ruby-color: #f59e0b;
-            --input-border: #cbd5e1;
-            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-            --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --accent-color: #047857;       /* 生词本/正确提示用深翡翠绿，清晰醒目 */
+            --accent-bg: #e6f4ea;          /* 生词本浅底色 */
+            --ai-color: #7c3aed;
+            --ai-bg: #f3e8ff;
+            --ruby-color: #b45309;         /* 拼音颜色：深琥珀色，清晰好认 */
+            --input-border: #9ca3af;       /* 输入框边框加深，一眼辨认 */
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.06);
             --radius-lg: 20px;
             --radius-md: 12px;
         }
@@ -33,19 +34,19 @@
         [data-theme="dark"] {
             --bg-color: #0f172a;
             --bg-gradient: radial-gradient(circle at top right, #1e293b 0%, #0f172a 100%);
-            --text-color: #f1f5f9;
+            --text-color: #f8fafc;
             --text-muted: #94a3b8;
             --card-bg: #1e293b;
             --primary-color: #60a5fa;
             --primary-hover: #93c5fd;
             --accent-color: #34d399;
-            --accent-bg: rgba(16, 185, 129, 0.1);
+            --accent-bg: rgba(16, 185, 129, 0.15);
             --ai-color: #a78bfa;
-            --ai-bg: rgba(139, 92, 246, 0.1);
+            --ai-bg: rgba(139, 92, 246, 0.15);
             --ruby-color: #fbbf24;
-            --input-border: #334155;
-            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
-            --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+            --input-border: #475569;
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
         }
 
         /* 🌟 优雅的纤细滚动条 */
@@ -57,17 +58,17 @@
             background: transparent;
         }
         ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
+            background: #9ca3af;
             border-radius: 3px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
+            background: #6b7280;
         }
         [data-theme="dark"] ::-webkit-scrollbar-thumb {
-            background: #334155;
+            background: #475569;
         }
         [data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
-            background: #475569;
+            background: #64748b;
         }
 
         body {
@@ -104,7 +105,7 @@
             color: var(--text-color);
             border-radius: var(--radius-md);
             cursor: pointer;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 14px;
             transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: var(--shadow-sm);
@@ -114,9 +115,10 @@
             transform: translateY(-2px);
             box-shadow: var(--shadow-md);
             border-color: var(--primary-color);
+            color: var(--primary-color);
         }
 
-        /* 生词本美化 */
+        /* 生词本高对比美化 */
         .vocab-notebook {
             width: 100%;
             background: var(--card-bg);
@@ -124,28 +126,28 @@
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-md);
             box-sizing: border-box;
-            border: 1px solid rgba(0,0,0,0.04);
+            border: 1px solid rgba(0,0,0,0.08);
         }
 
         .notebook-title {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-weight: 700;
+            font-weight: 800;
             font-size: 15px;
             margin-bottom: 12px;
             color: var(--text-color);
         }
 
         .clear-btn {
-            background: #ef4444;
+            background: #dc2626;
             color: white;
             border: none;
             padding: 5px 14px;
             border-radius: 20px;
             cursor: pointer;
             font-size: 12px;
-            font-weight: 600;
+            font-weight: 700;
             transition: opacity 0.2s;
         }
         .clear-btn:hover { opacity: 0.9; }
@@ -161,10 +163,10 @@
             color: var(--accent-color);
             padding: 6px 16px;
             border-radius: 20px;
-            font-size: 13.5px;
-            font-weight: 600;
+            font-size: 14px;
+            font-weight: 700;
             cursor: pointer;
-            border: 1px solid rgba(16, 185, 129, 0.2);
+            border: 1px solid rgba(4, 120, 87, 0.3);
             transition: all 0.2s;
         }
 
@@ -194,11 +196,11 @@
             box-shadow: var(--shadow-md);
             margin-bottom: 25px;
             box-sizing: border-box;
-            border: 1px solid rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.08);
         }
 
         .quiz-card { text-align: center; padding: 10px 0; }
-        .quiz-pinyin { font-size: 16px; color: var(--text-muted); margin-bottom: 25px; }
+        .quiz-pinyin { font-size: 16px; color: var(--text-muted); margin-bottom: 25px; font-weight: 600; }
         .quiz-options { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
         .quiz-opt-btn {
             padding: 14px 20px;
@@ -207,17 +209,18 @@
             color: var(--text-color);
             border-radius: var(--radius-md);
             font-size: 15px;
+            font-weight: 600;
             cursor: pointer;
             text-align: left;
             transition: all 0.2s;
         }
         .quiz-opt-btn:hover {
-            background: rgba(59, 130, 246, 0.05) !important;
+            background: rgba(37, 99, 235, 0.08) !important;
             border-color: var(--primary-color) !important;
             color: var(--primary-color) !important;
         }
-        .quiz-opt-btn.correct { background: #10b981 !important; color: white !important; border-color: #10b981; }
-        .quiz-opt-btn.wrong { background: #ef4444 !important; color: white !important; border-color: #ef4444; cursor: not-allowed; }
+        .quiz-opt-btn.correct { background: #059669 !important; color: white !important; border-color: #059669; }
+        .quiz-opt-btn.wrong { background: #dc2626 !important; color: white !important; border-color: #dc2626; cursor: not-allowed; }
 
         #quizQuestion {
             font-size: 40px;
@@ -234,7 +237,7 @@
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-md);
             box-sizing: border-box;
-            border: 1px solid rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.06);
             max-height: 82vh;
             overflow-y: auto;
         }
@@ -247,7 +250,7 @@
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-md);
             box-sizing: border-box;
-            border: 1px solid rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.06);
             max-height: 82vh;
             overflow-y: auto;
             display: none;
@@ -259,30 +262,31 @@
         .p-index {
             display: inline-block;
             font-size: 12px;
-            background: rgba(100, 116, 139, 0.1);
-            color: var(--text-muted);
+            background: #e5e7eb;
+            color: #374151;
             padding: 2px 8px;
             border-radius: 6px;
-            font-weight: 600;
+            font-weight: 700;
             user-select: none;
             margin-right: 4px;
         }
+        [data-theme="dark"] .p-index { background: #334155; color: #cbd5e1; }
 
         ruby { ruby-position: over; cursor: pointer; padding: 0 2px; border-radius: 4px; transition: all 0.2s ease; }
-        ruby:hover, ruby.is-active { background: rgba(245, 158, 11, 0.15); color: var(--ruby-color); }
+        ruby:hover, ruby.is-active { background: #fef3c7; color: #b45309; }
 
         #content rt {
             opacity: 0;
             transition: opacity 0.2s ease;
             user-select: none;
-            font-size: 12px;
+            font-size: 12.5px;
             color: var(--ruby-color);
-            font-weight: 600;
+            font-weight: 700;
             padding-bottom: 6px;
         }
         #content ruby:hover rt, #content ruby.is-active rt { opacity: 1; }
 
-        /* 气泡弹窗精美化 */
+        /* 气泡弹窗高对比清晰版 */
         .buddy-popover {
             display: none;
             position: fixed;
@@ -292,9 +296,9 @@
             border-radius: var(--radius-md);
             box-shadow: var(--shadow-md);
             padding: 20px;
-            width: 280px;
+            width: 290px;
             box-sizing: border-box;
-            border: 1px solid var(--input-border);
+            border: 2px solid var(--input-border);
             animation: popIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
         @keyframes popIn {
@@ -302,22 +306,22 @@
             to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        .pop-title-row { display: flex; align-items: baseline; gap: 10px; margin-bottom: 12px; border-bottom: 1px solid var(--input-border); padding-bottom: 10px; }
+        .pop-title-row { display: flex; align-items: baseline; gap: 10px; margin-bottom: 12px; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px; }
         .pop-title { font-size: 24px; font-weight: 800; }
-        .pop-pinyin { font-size: 14px; color: var(--ruby-color); font-weight: 700; }
-        .pop-box { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; margin-bottom: 10px; line-height: 1.5; }
-        .pop-tag { font-size: 11px; font-weight: 700; color: white; padding: 2px 6px; border-radius: 4px; flex-shrink: 0; }
-        .pop-en { color: #3b82f6; } .pop-en .pop-tag { background: #3b82f6; }
-        .pop-bm { color: #ef4444; } .pop-bm .pop-tag { background: #ef4444; }
-        .pop-footer { display: flex; justify-content: flex-end; margin-top: 15px; padding-top: 10px; border-top: 1px solid var(--input-border); }
-        .pop-btn-copy { background: #10b981; color: white; border: none; padding: 6px 16px; border-radius: var(--radius-md); font-size: 13px; cursor: pointer; font-weight: 700; transition: background 0.2s; }
-        .pop-btn-copy:hover { background: #059669; }
+        .pop-pinyin { font-size: 14px; color: var(--ruby-color); font-weight: 800; }
+        .pop-box { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; margin-bottom: 10px; line-height: 1.5; font-weight: 600; }
+        .pop-tag { font-size: 11px; font-weight: 800; color: white; padding: 2px 6px; border-radius: 4px; flex-shrink: 0; }
+        .pop-en { color: #1d4ed8; } .pop-en .pop-tag { background: #2563eb; }
+        .pop-bm { color: #b91c1c; } .pop-bm .pop-tag { background: #dc2626; }
+        .pop-footer { display: flex; justify-content: flex-end; margin-top: 15px; padding-top: 10px; border-top: 2px solid #e5e7eb; }
+        .pop-btn-copy { background: #059669; color: white; border: none; padding: 6px 16px; border-radius: var(--radius-md); font-size: 13px; cursor: pointer; font-weight: 800; transition: background 0.2s; }
+        .pop-btn-copy:hover { background: #047857; }
         .pop-arrow { position: absolute; bottom: -8px; left: 50%; width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 8px solid var(--card-bg); transform: translateX(-50%); }
 
         /* 选择题按钮状态 */
-        .quiz-choice-btn { background: var(--card-bg) !important; color: var(--text-color) !important; border: 1px solid var(--input-border) !important; transition: all 0.15s ease !important; }
-        .quiz-choice-btn.selected { background: rgba(59, 130, 246, 0.08) !important; border: 2px solid var(--primary-color) !important; color: var(--primary-color) !important; font-weight: 700 !important; }
-        .quiz-choice-btn.correct-answer-hint { background: var(--accent-bg) !important; border: 2px solid var(--accent-color) !important; color: var(--accent-color) !important; font-weight: 700 !important; }
+        .quiz-choice-btn { background: var(--card-bg) !important; color: var(--text-color) !important; border: 1px solid var(--input-border) !important; font-weight: 600; transition: all 0.15s ease !important; }
+        .quiz-choice-btn.selected { background: rgba(37, 99, 235, 0.1) !important; border: 2px solid var(--primary-color) !important; color: var(--primary-color) !important; font-weight: 800 !important; }
+        .quiz-choice-btn.correct-answer-hint { background: var(--accent-bg) !important; border: 2px solid #059669 !important; color: #047857 !important; font-weight: 800 !important; }
 
         /* 简答题文本框样式 */
         .essay-textarea {
@@ -325,11 +329,12 @@
             height: 85px;
             padding: 12px;
             border-radius: var(--radius-md);
-            border: 1px solid var(--input-border);
+            border: 2px solid var(--input-border);
             background: var(--card-bg);
             color: var(--text-color);
             font-family: inherit;
-            font-size: 14px;
+            font-size: 14.5px;
+            font-weight: 500;
             resize: vertical;
             box-sizing: border-box;
             margin-top: 8px;
@@ -338,7 +343,7 @@
         .essay-textarea:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
         }
 
         /* 简答题参考答案容器 */
@@ -346,11 +351,12 @@
             display: none;
             margin-top: 10px;
             padding: 14px;
-            background: var(--accent-bg);
-            border-left: 4px solid var(--accent-color);
+            background: #e6f4ea;
+            border-left: 4px solid #059669;
             border-radius: var(--radius-md);
-            font-size: 13.5px;
-            color: var(--accent-color);
+            font-size: 14px;
+            font-weight: 600;
+            color: #065f46;
             line-height: 1.7;
         }
 
@@ -358,19 +364,21 @@
         .teacher-p-analysis, [id^="q-analysis-"], [id^="essay-analysis-"] {
             background: var(--ai-bg) !important;
             border-left: 4px solid var(--ai-color) !important;
-            color: var(--ai-color) !important;
+            color: #5b21b6 !important;
             padding: 12px 16px;
             margin: 10px 0 20px 0;
             border-radius: var(--radius-md);
-            font-size: 13.5px;
+            font-size: 14px;
+            font-weight: 600;
         }
         #teacherArticleAnalysis {
             background: var(--ai-bg) !important;
             border-left: 4px solid var(--ai-color) !important;
-            color: var(--ai-color) !important;
+            color: #5b21b6 !important;
             padding: 18px;
             margin-bottom: 25px;
             border-radius: var(--radius-md);
+            font-weight: 600;
         }
 
         @media (max-width: 1024px) {
@@ -401,7 +409,7 @@
     <!-- 生词测试全屏浮层 -->
     <div id="gameContainer" class="game-container" style="display: none;">
         <div class="quiz-card">
-            <div id="quizProgress" style="font-size: 14px; color: var(--text-muted); margin-bottom: 8px;"></div>
+            <div id="quizProgress" style="font-size: 14px; color: var(--text-muted); margin-bottom: 8px; font-weight: 700;"></div>
             <div id="quizQuestion" class="quiz-question"></div>
             <div id="quizPinyin" class="quiz-pinyin"></div>
             <div id="quizOptions" class="quiz-options"></div>
@@ -424,23 +432,23 @@
             <h2 style="font-size: 20px; margin-bottom: 20px; border-bottom: 2px dashed var(--input-border); padding-bottom: 10px;">📝 一、选择题（客观题）</h2>
             <div id="quizContainer"></div>
 
-            <div style="margin-top: 25px; padding-top: 15px; border-top: 2px solid rgba(0,0,0,0.05); text-align: center;">
-                <button id="submitQuizBtn" onclick="submitAndShowWrongOnly()" style="padding: 12px 32px; background: var(--primary-color); color: white; border: none; border-radius: 25px; font-size: 15px; font-weight: 700; cursor: pointer; transition: background 0.2s;">
+            <div style="margin-top: 25px; padding-top: 15px; border-top: 2px solid rgba(0,0,0,0.08); text-align: center;">
+                <button id="submitQuizBtn" onclick="submitAndShowWrongOnly()" style="padding: 12px 32px; background: var(--primary-color); color: white; border: none; border-radius: 25px; font-size: 15px; font-weight: 800; cursor: pointer; transition: background 0.2s;">
                     提交客观题检查 🚀
                 </button>
-                <button id="retryQuizBtn" onclick="retryQuizAnswers()" style="display: none; padding: 12px 32px; background: #f59e0b; color: white; border: none; border-radius: 25px; font-size: 15px; font-weight: 700; cursor: pointer; margin-right: 10px;">
+                <button id="retryQuizBtn" onclick="retryQuizAnswers()" style="display: none; padding: 12px 32px; background: #d97706; color: white; border: none; border-radius: 25px; font-size: 15px; font-weight: 800; cursor: pointer; margin-right: 10px;">
                     重新作答 🔄
                 </button>
-                <button id="showCorrectBtn" onclick="revealRealCorrectAnswers()" style="display: none; padding: 12px 32px; background: var(--accent-color); color: white; border: none; border-radius: 25px; font-size: 15px; font-weight: 700; cursor: pointer;">
+                <button id="showCorrectBtn" onclick="revealRealCorrectAnswers()" style="display: none; padding: 12px 32px; background: #059669; color: white; border: none; border-radius: 25px; font-size: 15px; font-weight: 800; cursor: pointer;">
                     查看客观题答案 👁️
                 </button>
-                <div id="quizResultScore" style="margin-top: 15px; font-size: 16px; font-weight: bold; color: var(--accent-color); display: none; line-height: 1.6;"></div>
+                <div id="quizResultScore" style="margin-top: 15px; font-size: 17px; font-weight: 800; color: #047857; display: none; line-height: 1.6;"></div>
             </div>
 
-            <div style="margin-top: 40px; padding-top: 25px; border-top: 3px solid rgba(0,0,0,0.05);">
+            <div style="margin-top: 40px; padding-top: 25px; border-top: 3px solid rgba(0,0,0,0.08);">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 2px dashed var(--input-border); padding-bottom: 10px;">
                     <h2 style="font-size: 20px; margin: 0; color: var(--text-color);">✍️ 二、简答题（主观题）</h2>
-                    <button onclick="clearEssayDrafts()" style="background: #ef4444; color: white; border: none; padding: 5px 12px; border-radius: 12px; font-size: 11px; font-weight: 600; cursor: pointer;" title="清空所有简答题输入草稿">清空简答草稿 🗑️</button>
+                    <button onclick="clearEssayDrafts()" style="background: #dc2626; color: white; border: none; padding: 5px 12px; border-radius: 12px; font-size: 11.5px; font-weight: 700; cursor: pointer;" title="清空所有简答题输入草稿">清空简答草稿 🗑️</button>
                 </div>
                 <div id="essayContainer"></div>
             </div>
@@ -605,7 +613,7 @@
                 qBox.setAttribute("data-q-id", q.id);
 
                 const qText = document.createElement('div');
-                qText.style.fontWeight = "700";
+                qText.style.fontWeight = "800";
                 qText.style.fontSize = "15.5px";
                 qText.style.marginBottom = "10px";
                 qText.innerHTML = `${q.id}. ${q.question.replace(/\n/g, '<br>')}`;
@@ -643,7 +651,7 @@
                     btn.style.padding = "10px 14px";
                     btn.style.borderRadius = "var(--radius-md)";
                     btn.style.cursor = "pointer";
-                    btn.style.fontSize = "14px";
+                    btn.style.fontSize = "14.5px";
 
                     btn.onclick = () => {
                         if (btn.disabled) return;
@@ -677,7 +685,7 @@
                 eBox.setAttribute("data-essay-id", essay.id);
 
                 const eText = document.createElement('div');
-                eText.style.fontWeight = "700";
+                eText.style.fontWeight = "800";
                 eText.style.fontSize = "15.5px";
                 eText.style.marginBottom = "10px";
                 eText.innerHTML = `${essay.question}`;
@@ -709,7 +717,7 @@
 
                 const toggleAnswerBtn = document.createElement('button');
                 toggleAnswerBtn.innerText = "👁️ 查看参考答案";
-                toggleAnswerBtn.style.cssText = "margin-top: 10px; padding: 6px 14px; background: var(--ai-color); color: white; border: none; border-radius: 15px; font-size: 12.5px; font-weight: 600; cursor: pointer; transition: opacity 0.2s;";
+                toggleAnswerBtn.style.cssText = "margin-top: 10px; padding: 6px 14px; background: var(--ai-color); color: white; border: none; border-radius: 15px; font-size: 12.5px; font-weight: 700; cursor: pointer; transition: opacity 0.2s;";
                 
                 const answerBox = document.createElement('div');
                 answerBox.className = "essay-answer-box";
@@ -805,12 +813,12 @@
                     if (btn === selectedBtn && studentLetter === q.answer) {
                         if (!btn.innerText.includes("  (✅)")) btn.innerText += "  (✅)";
                         btn.classList.add('correct-answer-hint');
-                        btn.style.fontWeight = "700";
+                        btn.style.fontWeight = "800";
                     }
                     if (btn === selectedBtn && studentLetter !== q.answer) {
-                        btn.style.background = "#ef4444";
+                        btn.style.background = "#dc2626";
                         btn.style.color = "white";
-                        btn.style.borderColor = "#ef4444";
+                        btn.style.borderColor = "#dc2626";
                         if (!btn.innerText.includes("  (❌️)")) btn.innerText += "  (❌️)";
                     }
                 });
@@ -820,7 +828,7 @@
 
             const resultBox = document.getElementById('quizResultScore');
             resultBox.style.display = "block";
-            resultBox.innerHTML = `🎉 客观题得分：<span style="font-size: 22px; color: var(--accent-color); font-weight: 800;">${score}</span> / ${totalQuestions} 分`;
+            resultBox.innerHTML = `🎉 客观题得分：<span style="font-size: 22px; color: #047857; font-weight: 800;">${score}</span> / ${totalQuestions} 分`;
             
             document.getElementById('submitQuizBtn').style.display = "none";
             document.getElementById('retryQuizBtn').style.display = "inline-block";
@@ -846,7 +854,7 @@
                     if (btnLetter === q.answer) {
                         let currentText = btn.innerText.replace("  (✅)", "").replace(" (✅)", "");
                         btn.innerText = currentText + "  (✅)";
-                        btn.style.fontWeight = "700";
+                        btn.style.fontWeight = "800";
                         btn.classList.add('correct-answer-hint');
                     }
                 });
@@ -895,7 +903,7 @@
             const list = document.getElementById('notebookList'); 
             if (!list) return;
             if (saved.length === 0) { 
-                list.innerHTML = "<span style='color:var(--text-muted); font-size:13px;'>点击正文词语 Copy 记录生词</span>"; 
+                list.innerHTML = "<span style='color:var(--text-muted); font-size:13.5px;'>点击正文词语 Copy 记录生词</span>"; 
             } else { 
                 list.innerHTML = ""; 
                 saved.forEach(idx => { 
@@ -927,7 +935,7 @@
 
                     const deleteBtn = document.createElement("span");
                     deleteBtn.innerText = "×";
-                    deleteBtn.style.color = "#ef4444";
+                    deleteBtn.style.color = "#dc2626";
                     deleteBtn.style.fontWeight = "bold";
                     deleteBtn.style.padding = "0 4px";
                     deleteBtn.style.cursor = "pointer";
@@ -1019,9 +1027,9 @@
             }); 
         }
 
-    function toggleTheme() { 
-        document.documentElement.setAttribute('data-theme', document.documentElement.getAttribute('data-theme')==='dark'?'':'dark'); 
-    }
+        function toggleTheme() { 
+            document.documentElement.setAttribute('data-theme', document.documentElement.getAttribute('data-theme')==='dark'?'':'dark'); 
+        }
     </script>
 </body>
 </html>
