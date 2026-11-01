@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>华文智能互动学习阅读器 - 书卷水墨风</title>
+    <title>华文智能互动学习阅读器 - 书卷水墨·古铜墨褐版</title>
     <style>
         /* ==========================================================================
-           🎨 中国书卷水墨画风格配色系统 (Ink & Xuan Paper Theme)
+           🎨 书卷水墨·古铜墨褐版色彩系统 (Xuan Paper & Bronze-Brown Theme)
            ========================================================================== */
 
         :root {
@@ -21,9 +21,9 @@
             --primary-color: #b91c1c;
             --primary-hover: #991b1b;
 
-            /* 🌿 生词本专用色：竹青墨绿（知识沉淀） */
-            --notebook-color: #065f46;
-            --notebook-bg: #e6f4ea;
+            /* 🟤 生词本专用色：古铜墨褐（沉稳学术、函套质感） */
+            --notebook-color: #78350f;
+            --notebook-bg: #fef3c7;
 
             /* 🖋️ 文本赏析专用色：远山青黛墨色 */
             --ai-color: #0f5257;
@@ -52,8 +52,8 @@
             --primary-color: #f87171;      /* 夜间朱砂红 */
             --primary-hover: #fca5a5;
             
-            --notebook-color: #34d399;
-            --notebook-bg: rgba(52, 211, 153, 0.12);
+            --notebook-color: #fcd34d;     /* 夜间古铜金褐 */
+            --notebook-bg: rgba(252, 211, 77, 0.12);
 
             --ai-color: #5eead4;       /* 亮青黛 */
             --ai-bg: #0e2a2d;          /* 深空青幽底 */
@@ -135,7 +135,7 @@
             color: var(--primary-color);
         }
 
-        /* 生词本美化 */
+        /* 生词本美化（古铜墨褐主题） */
         .vocab-notebook {
             width: 100%;
             background: var(--card-bg);
@@ -183,7 +183,7 @@
             font-size: 14px;
             font-weight: 700;
             cursor: pointer;
-            border: 1px solid rgba(6, 95, 70, 0.25);
+            border: 1px solid rgba(120, 53, 15, 0.25);
             transition: all 0.2s;
         }
 
@@ -332,8 +332,8 @@
         .pop-en { color: #0f5257; } .pop-en .pop-tag { background: #0f5257; }
         .pop-bm { color: #b91c1c; } .pop-bm .pop-tag { background: #b91c1c; }
         .pop-footer { display: flex; justify-content: flex-end; margin-top: 15px; padding-top: 10px; border-top: 2px solid var(--input-border); }
-        .pop-btn-copy { background: #047857; color: white; border: none; padding: 6px 16px; border-radius: var(--radius-md); font-size: 13px; cursor: pointer; font-weight: 800; transition: background 0.2s; }
-        .pop-btn-copy:hover { background: #065f46; }
+        .pop-btn-copy { background: #78350f; color: white; border: none; padding: 6px 16px; border-radius: var(--radius-md); font-size: 13px; cursor: pointer; font-weight: 800; transition: background 0.2s; }
+        .pop-btn-copy:hover { background: #451a03; }
         .pop-arrow { position: absolute; bottom: -8px; left: 50%; width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 8px solid var(--card-bg); transform: translateX(-50%); }
 
         /* 选择题按钮状态 */
@@ -378,7 +378,7 @@
             line-height: 1.7;
         }
 
-        /* 🌟 文本赏析与考点解析（采用青黛墨绿书卷风） */
+        /* 🌟 文本赏析与考点解析 */
         .teacher-p-analysis, [id^="q-analysis-"], [id^="essay-analysis-"] {
             background: var(--ai-bg) !important;
             border-left: 4px solid var(--ai-color) !important;
