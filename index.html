@@ -3,66 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>华文智能互动学习阅读器 - 远山青黛无紫纯净版</title>
+    <title>华文智能互动学习阅读器 - 书卷水墨风</title>
     <style>
         /* ==========================================================================
-           🎨 远山青黛无紫纯净版配色系统 (Slate Blue & Ink Green Theme)
+           🎨 中国书卷水墨画风格配色系统 (Ink & Xuan Paper Theme)
            ========================================================================== */
 
         :root {
-            --bg-color: #f8fafc;
-            --bg-gradient: radial-gradient(circle at top right, #ffffff 0%, #f1f5f9 100%);
-            --text-color: #0f172a;         /* 极深碳黑，清晰锐利 */
-            --text-muted: #64748b;         /* 辅助文字 */
-            --card-bg: #ffffff;
+            /* 📜 日间模式：宣纸微黄、古墨飘香 */
+            --bg-color: #f7f4eb;
+            --bg-gradient: radial-gradient(circle at top right, #faf8f2 0%, #ede6d6 100%);
+            --text-color: #1c1c1c;         /* 浓墨炭黑，清晰温润 */
+            --text-muted: #5c554b;         /* 淡墨辅助字 */
+            --card-bg: #fffcf7;          /* 仿宣纸白卡片 */
             
-            /* 🌊 核心主色调：远山青黛蓝 */
-            --primary-color: #0284c7;
-            --primary-hover: #0369a1;
+            /* 🔴 核心主色调：传统朱砂红（点睛、强调、按钮） */
+            --primary-color: #b91c1c;
+            --primary-hover: #991b1b;
 
-            /* 🌿 生词本专用色：翡翠墨绿体系 */
-            --notebook-color: #047857;
+            /* 🌿 生词本专用色：竹青墨绿（知识沉淀） */
+            --notebook-color: #065f46;
             --notebook-bg: #e6f4ea;
 
-            /* 🖋️ 文本赏析专用色：远山青绿体系（彻底告别紫色） */
-            --ai-color: #0f766e;
-            --ai-bg: #f0fdfa;
+            /* 🖋️ 文本赏析专用色：远山青黛墨色 */
+            --ai-color: #0f5257;
+            --ai-bg: #eaf4f4;
 
-            /* 🟢 正确/成功提示色 */
-            --accent-color: #059669;
-            --accent-bg: #ecfdf5;
+            /* 🟢 正确/成功提示色：松柏绿 */
+            --accent-color: #047857;
+            --accent-bg: #e6f4ea;
 
-            --ruby-color: #b45309;         /* 拼音：温润琥珀金 */
-            --input-border: #cbd5e1;
-            --shadow-sm: 0 4px 6px -1px rgba(15, 23, 42, 0.05), 0 2px 4px -1px rgba(15, 23, 42, 0.03);
-            --shadow-md: 0 20px 25px -5px rgba(15, 23, 42, 0.08), 0 10px 10px -5px rgba(15, 23, 42, 0.04);
-            --radius-lg: 24px;
-            --radius-md: 14px;
+            --ruby-color: #92400e;         /* 拼音：古铜金 */
+            --input-border: #d4c5a9;       /* 宣纸质感边框 */
+            --shadow-sm: 0 4px 6px -1px rgba(60, 50, 40, 0.06), 0 2px 4px -1px rgba(60, 50, 40, 0.03);
+            --shadow-md: 0 15px 30px -5px rgba(60, 50, 40, 0.08), 0 8px 10px -6px rgba(60, 50, 40, 0.04);
+            --radius-lg: 16px;
+            --radius-md: 10px;
         }
 
-        /* 🌙 暗黑模式适配（深空青灰与远山青绿） */
+        /* 🌙 暗黑模式：深夜古墨灯下夜读版 */
         [data-theme="dark"] {
-            --bg-color: #0b131a;
-            --bg-gradient: radial-gradient(circle at top right, #13222f 0%, #0b131a 100%);
-            --text-color: #f8fafc;
-            --text-muted: #94a3b8;
-            --card-bg: #13222f;
+            --bg-color: #121619;
+            --bg-gradient: radial-gradient(circle at top right, #1a2126 0%, #121619 100%);
+            --text-color: #f3f0e6;         /* 仿宣纸米白字 */
+            --text-muted: #a39e93;
+            --card-bg: #192025;
             
-            --primary-color: #38bdf8;
-            --primary-hover: #7dd3fc;
+            --primary-color: #f87171;      /* 夜间朱砂红 */
+            --primary-hover: #fca5a5;
             
             --notebook-color: #34d399;
             --notebook-bg: rgba(52, 211, 153, 0.12);
 
-            --ai-color: #5eead4;       /* 亮青绿 */
-            --ai-bg: #042f2e;          /* 深空青幽底 */
+            --ai-color: #5eead4;       /* 亮青黛 */
+            --ai-bg: #0e2a2d;          /* 深空青幽底 */
 
             --accent-color: #34d399;
             --accent-bg: rgba(52, 211, 153, 0.12);
             --ruby-color: #fbbf24;
-            --input-border: #334155;
+            --input-border: #3b464f;
             --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
-            --shadow-md: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+            --shadow-md: 0 15px 30px -5px rgba(0, 0, 0, 0.6);
         }
 
         /* 🌟 极简纤细优雅滚动条 */
@@ -74,25 +75,25 @@
             background: transparent;
         }
         ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
+            background: #d4c5a9;
             border-radius: 3px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
+            background: #b5a484;
         }
         [data-theme="dark"] ::-webkit-scrollbar-thumb {
-            background: #334155;
+            background: #3b464f;
         }
         [data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
-            background: #475569;
+            background: #4f5d68;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans CJK SC", "Microsoft YaHei", "KaiTi", sans-serif;
             background: var(--bg-gradient);
             background-attachment: fixed;
             color: var(--text-color);
-            line-height: 1.9;
+            line-height: 2.0;
             margin: 0;
             padding: 35px 20px;
             display: flex;
@@ -115,7 +116,7 @@
         }
 
         .control-panel button {
-            padding: 11px 24px;
+            padding: 10px 22px;
             border: 1px solid var(--input-border);
             background: var(--card-bg);
             color: var(--text-color);
@@ -142,7 +143,7 @@
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-md);
             box-sizing: border-box;
-            border: 1px solid rgba(0,0,0,0.04);
+            border: 1px solid var(--input-border);
         }
 
         .notebook-title {
@@ -156,7 +157,7 @@
         }
 
         .clear-btn {
-            background: #ef4444;
+            background: #991b1b;
             color: white;
             border: none;
             padding: 5px 14px;
@@ -182,7 +183,7 @@
             font-size: 14px;
             font-weight: 700;
             cursor: pointer;
-            border: 1px solid rgba(4, 120, 87, 0.2);
+            border: 1px solid rgba(6, 95, 70, 0.25);
             transition: all 0.2s;
         }
 
@@ -212,7 +213,7 @@
             box-shadow: var(--shadow-md);
             margin-bottom: 25px;
             box-sizing: border-box;
-            border: 1px solid rgba(0, 0, 0, 0.04);
+            border: 1px solid var(--input-border);
         }
 
         .quiz-card { text-align: center; padding: 10px 0; }
@@ -231,12 +232,12 @@
             transition: all 0.2s;
         }
         .quiz-opt-btn:hover {
-            background: rgba(2, 132, 199, 0.08) !important;
+            background: rgba(185, 28, 28, 0.06) !important;
             border-color: var(--primary-color) !important;
             color: var(--primary-color) !important;
         }
-        .quiz-opt-btn.correct { background: #059669 !important; color: white !important; border-color: #059669; }
-        .quiz-opt-btn.wrong { background: #ef4444 !important; color: white !important; border-color: #ef4444; cursor: not-allowed; }
+        .quiz-opt-btn.correct { background: #047857 !important; color: white !important; border-color: #047857; }
+        .quiz-opt-btn.wrong { background: #b91c1c !important; color: white !important; border-color: #b91c1c; cursor: not-allowed; }
 
         #quizQuestion {
             font-size: 40px;
@@ -253,7 +254,7 @@
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-md);
             box-sizing: border-box;
-            border: 1px solid rgba(0,0,0,0.04);
+            border: 1px solid var(--input-border);
             max-height: 82vh;
             overflow-y: auto;
         }
@@ -266,29 +267,31 @@
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-md);
             box-sizing: border-box;
-            border: 1px solid rgba(0,0,0,0.04);
+            border: 1px solid var(--input-border);
             max-height: 82vh;
             overflow-y: auto;
             display: none;
         }
 
-        h1 { text-align: center; font-size: 32px; font-weight: 800; margin-top: 0; margin-bottom: 35px; letter-spacing: 2px; }
-        #content p { text-align: justify; text-justify: inter-ideograph; margin-bottom: 35px; font-size: 19px; letter-spacing: 1.5px; }
+        h1 { text-align: center; font-size: 32px; font-weight: 800; margin-top: 0; margin-bottom: 35px; letter-spacing: 3px; font-family: "KaiTi", "STKaiti", serif; }
+        #content p { text-align: justify; text-justify: inter-ideograph; margin-bottom: 35px; font-size: 19.5px; letter-spacing: 1.8px; }
 
         .p-index {
             display: inline-block;
             font-size: 12px;
-            background: rgba(100, 116, 139, 0.1);
-            color: var(--text-muted);
+            background: #eedecc;
+            color: #5c554b;
             padding: 2px 8px;
-            border-radius: 6px;
+            border-radius: 4px;
             font-weight: 700;
             user-select: none;
-            margin-right: 4px;
+            margin-right: 6px;
         }
+        [data-theme="dark"] .p-index { background: #263238; color: #b0bec5; }
 
         ruby { ruby-position: over; cursor: pointer; padding: 0 2px; border-radius: 4px; transition: all 0.2s ease; }
-        ruby:hover, ruby.is-active { background: rgba(180, 83, 9, 0.12); color: var(--ruby-color); }
+        ruby:hover, ruby.is-active { background: #fef3c7; color: #b45309; }
+        [data-theme="dark"] ruby:hover, [data-theme="dark"] ruby.is-active { background: #3e2723; color: #fbbf24; }
 
         #content rt {
             opacity: 0;
@@ -313,7 +316,7 @@
             padding: 20px;
             width: 290px;
             box-sizing: border-box;
-            border: 1px solid var(--input-border);
+            border: 2px solid var(--input-border);
             animation: popIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
         @keyframes popIn {
@@ -321,21 +324,21 @@
             to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        .pop-title-row { display: flex; align-items: baseline; gap: 10px; margin-bottom: 12px; border-bottom: 1px solid var(--input-border); padding-bottom: 10px; }
-        .pop-title { font-size: 24px; font-weight: 800; }
+        .pop-title-row { display: flex; align-items: baseline; gap: 10px; margin-bottom: 12px; border-bottom: 2px solid var(--input-border); padding-bottom: 10px; }
+        .pop-title { font-size: 24px; font-weight: 800; font-family: "KaiTi", serif; }
         .pop-pinyin { font-size: 14px; color: var(--ruby-color); font-weight: 800; }
         .pop-box { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; margin-bottom: 10px; line-height: 1.5; font-weight: 600; }
         .pop-tag { font-size: 11px; font-weight: 800; color: white; padding: 2px 6px; border-radius: 4px; flex-shrink: 0; }
-        .pop-en { color: #0284c7; } .pop-en .pop-tag { background: #0284c7; }
-        .pop-bm { color: #ef4444; } .pop-bm .pop-tag { background: #ef4444; }
-        .pop-footer { display: flex; justify-content: flex-end; margin-top: 15px; padding-top: 10px; border-top: 1px solid var(--input-border); }
-        .pop-btn-copy { background: #059669; color: white; border: none; padding: 6px 16px; border-radius: var(--radius-md); font-size: 13px; cursor: pointer; font-weight: 800; transition: background 0.2s; }
-        .pop-btn-copy:hover { background: #047857; }
+        .pop-en { color: #0f5257; } .pop-en .pop-tag { background: #0f5257; }
+        .pop-bm { color: #b91c1c; } .pop-bm .pop-tag { background: #b91c1c; }
+        .pop-footer { display: flex; justify-content: flex-end; margin-top: 15px; padding-top: 10px; border-top: 2px solid var(--input-border); }
+        .pop-btn-copy { background: #047857; color: white; border: none; padding: 6px 16px; border-radius: var(--radius-md); font-size: 13px; cursor: pointer; font-weight: 800; transition: background 0.2s; }
+        .pop-btn-copy:hover { background: #065f46; }
         .pop-arrow { position: absolute; bottom: -8px; left: 50%; width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 8px solid var(--card-bg); transform: translateX(-50%); }
 
         /* 选择题按钮状态 */
         .quiz-choice-btn { background: var(--card-bg) !important; color: var(--text-color) !important; border: 1px solid var(--input-border) !important; font-weight: 600; transition: all 0.15s ease !important; }
-        .quiz-choice-btn.selected { background: rgba(2, 132, 199, 0.08) !important; border: 2px solid var(--primary-color) !important; color: var(--primary-color) !important; font-weight: 800 !important; }
+        .quiz-choice-btn.selected { background: rgba(185, 28, 28, 0.08) !important; border: 2px solid var(--primary-color) !important; color: var(--primary-color) !important; font-weight: 800 !important; }
         .quiz-choice-btn.correct-answer-hint { background: var(--accent-bg) !important; border: 2px solid var(--accent-color) !important; color: var(--accent-color) !important; font-weight: 800 !important; }
 
         /* 简答题文本框样式 */
@@ -344,7 +347,7 @@
             height: 85px;
             padding: 12px;
             border-radius: var(--radius-md);
-            border: 1px solid var(--input-border);
+            border: 2px solid var(--input-border);
             background: var(--card-bg);
             color: var(--text-color);
             font-family: inherit;
@@ -358,7 +361,7 @@
         .essay-textarea:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+            box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.12);
         }
 
         /* 简答题参考答案容器 */
@@ -375,7 +378,7 @@
             line-height: 1.7;
         }
 
-        /* 🌟 文本赏析与考点解析（采用远山青黛无紫配色，日夜皆清爽） */
+        /* 🌟 文本赏析与考点解析（采用青黛墨绿书卷风） */
         .teacher-p-analysis, [id^="q-analysis-"], [id^="essay-analysis-"] {
             background: var(--ai-bg) !important;
             border-left: 4px solid var(--ai-color) !important;
@@ -387,7 +390,7 @@
             font-weight: 700;
         }
         [data-theme="dark"] .teacher-p-analysis, [data-theme="dark"] [id^="q-analysis-"], [data-theme="dark"] [id^="essay-analysis-"] {
-            color: #5eead4 !important; /* 夜间模式下文字为高亮青绿 */
+            color: #5eead4 !important;
         }
 
         #teacherArticleAnalysis {
@@ -458,7 +461,7 @@
                 <button id="submitQuizBtn" onclick="submitAndShowWrongOnly()" style="padding: 12px 32px; background: var(--primary-color); color: white; border: none; border-radius: 25px; font-size: 15px; font-weight: 800; cursor: pointer; transition: background 0.2s;">
                     提交客观题检查 🚀
                 </button>
-                <button id="retryQuizBtn" onclick="retryQuizAnswers()" style="display: none; padding: 12px 32px; background: #f59e0b; color: white; border: none; border-radius: 25px; font-size: 15px; font-weight: 800; cursor: pointer; margin-right: 10px;">
+                <button id="retryQuizBtn" onclick="retryQuizAnswers()" style="display: none; padding: 12px 32px; background: #d97706; color: white; border: none; border-radius: 25px; font-size: 15px; font-weight: 800; cursor: pointer; margin-right: 10px;">
                     重新作答 🔄
                 </button>
                 <button id="showCorrectBtn" onclick="revealRealCorrectAnswers()" style="display: none; padding: 12px 32px; background: var(--accent-color); color: white; border: none; border-radius: 25px; font-size: 15px; font-weight: 800; cursor: pointer;">
@@ -470,7 +473,7 @@
             <div style="margin-top: 40px; padding-top: 25px; border-top: 3px solid rgba(0,0,0,0.06);">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 2px dashed var(--input-border); padding-bottom: 10px;">
                     <h2 style="font-size: 20px; margin: 0; color: var(--text-color);">✍️ 二、简答题（主观题）</h2>
-                    <button onclick="clearEssayDrafts()" style="background: #ef4444; color: white; border: none; padding: 5px 12px; border-radius: 12px; font-size: 11.5px; font-weight: 700; cursor: pointer;" title="清空所有简答题输入草稿">清空简答草稿 🗑️</button>
+                    <button onclick="clearEssayDrafts()" style="background: #991b1b; color: white; border: none; padding: 5px 12px; border-radius: 12px; font-size: 11.5px; font-weight: 700; cursor: pointer;" title="清空所有简答题输入草稿">清空简答草稿 🗑️</button>
                 </div>
                 <div id="essayContainer"></div>
             </div>
@@ -838,9 +841,9 @@
                         btn.style.fontWeight = "800";
                     }
                     if (btn === selectedBtn && studentLetter !== q.answer) {
-                        btn.style.background = "#ef4444";
+                        btn.style.background = "#b91c1c";
                         btn.style.color = "white";
-                        btn.style.borderColor = "#ef4444";
+                        btn.style.borderColor = "#b91c1c";
                         if (!btn.innerText.includes("  (❌️)")) btn.innerText += "  (❌️)";
                     }
                 });
@@ -850,7 +853,7 @@
 
             const resultBox = document.getElementById('quizResultScore');
             resultBox.style.display = "block";
-            resultBox.innerHTML = `🎉 客观题得分：<span style="font-size: 22px; color: var(--accent-color); font-weight: 800;">${score}</span> / ${totalQuestions} 分`;
+            resultBox.innerHTML = `🎉 客观题得分：<span style="font-size: 22px; color: #047857; font-weight: 800;">${score}</span> / ${totalQuestions} 分`;
             
             document.getElementById('submitQuizBtn').style.display = "none";
             document.getElementById('retryQuizBtn').style.display = "inline-block";
@@ -957,7 +960,7 @@
 
                     const deleteBtn = document.createElement("span");
                     deleteBtn.innerText = "×";
-                    deleteBtn.style.color = "#ef4444";
+                    deleteBtn.style.color = "#991b1b";
                     deleteBtn.style.fontWeight = "bold";
                     deleteBtn.style.padding = "0 4px";
                     deleteBtn.style.cursor = "pointer";
