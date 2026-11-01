@@ -3,36 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>华文智能互动学习阅读器 - 现代暮光极简版</title>
+    <title>华文智能互动学习阅读器 - 远山青黛无紫纯净版</title>
     <style>
         /* ==========================================================================
-           🎨 方案C：现代暮光极简风配色系统 (Twilight Minimalist Theme)
+           🎨 远山青黛无紫纯净版配色系统 (Slate Blue & Ink Green Theme)
            ========================================================================== */
 
         :root {
             --bg-color: #f8fafc;
             --bg-gradient: radial-gradient(circle at top right, #ffffff 0%, #f1f5f9 100%);
-            --text-color: #0f172a;         /* 极深暮光碳黑，极其清晰 */
+            --text-color: #0f172a;         /* 极深碳黑，清晰锐利 */
             --text-muted: #64748b;         /* 辅助文字 */
             --card-bg: #ffffff;
             
-            /* 🔮 核心主色调：暮光靛蓝（现代 EdTech 科技风） */
-            --primary-color: #6366f1;
-            --primary-hover: #4f46e5;
+            /* 🌊 核心主色调：远山青黛蓝 */
+            --primary-color: #0284c7;
+            --primary-hover: #0369a1;
 
-            /* 💧 生词本专用色：冰川蓝体系 */
-            --notebook-color: #0284c7;
-            --notebook-bg: #e0f2fe;
+            /* 🌿 生词本专用色：翡翠墨绿体系 */
+            --notebook-color: #047857;
+            --notebook-bg: #e6f4ea;
 
-            /* 🌌 文本赏析专用色：柔和紫藤色系 */
-            --ai-color: #7c3aed;
-            --ai-bg: #f5f3ff;
+            /* 🖋️ 文本赏析专用色：远山青绿体系（彻底告别紫色） */
+            --ai-color: #0f766e;
+            --ai-bg: #f0fdfa;
 
-            /* 🟢 正确/成功提示色：薄荷翡翠绿 */
+            /* 🟢 正确/成功提示色 */
             --accent-color: #059669;
             --accent-bg: #ecfdf5;
 
-            --ruby-color: #d97706;         /* 拼音：琥珀金，护眼清晰 */
+            --ruby-color: #b45309;         /* 拼音：温润琥珀金 */
             --input-border: #cbd5e1;
             --shadow-sm: 0 4px 6px -1px rgba(15, 23, 42, 0.05), 0 2px 4px -1px rgba(15, 23, 42, 0.03);
             --shadow-md: 0 20px 25px -5px rgba(15, 23, 42, 0.08), 0 10px 10px -5px rgba(15, 23, 42, 0.04);
@@ -40,22 +40,22 @@
             --radius-md: 14px;
         }
 
-        /* 🌙 暗黑模式旗舰适配（方案C夜间版：深空黑曜石配霓虹紫） */
+        /* 🌙 暗黑模式适配（深空青灰与远山青绿） */
         [data-theme="dark"] {
-            --bg-color: #090d16;
-            --bg-gradient: radial-gradient(circle at top right, #111827 0%, #090d16 100%);
+            --bg-color: #0b131a;
+            --bg-gradient: radial-gradient(circle at top right, #13222f 0%, #0b131a 100%);
             --text-color: #f8fafc;
             --text-muted: #94a3b8;
-            --card-bg: #111827;
+            --card-bg: #13222f;
             
-            --primary-color: #818cf8;
-            --primary-hover: #a5b4fc;
+            --primary-color: #38bdf8;
+            --primary-hover: #7dd3fc;
             
-            --notebook-color: #38bdf8;
-            --notebook-bg: rgba(56, 189, 248, 0.12);
+            --notebook-color: #34d399;
+            --notebook-bg: rgba(52, 211, 153, 0.12);
 
-            --ai-color: #c084fc;       /* 亮霓虹紫 */
-            --ai-bg: #1e1b4b;          /* 深空幽紫底 */
+            --ai-color: #5eead4;       /* 亮青绿 */
+            --ai-bg: #042f2e;          /* 深空青幽底 */
 
             --accent-color: #34d399;
             --accent-bg: rgba(52, 211, 153, 0.12);
@@ -182,7 +182,7 @@
             font-size: 14px;
             font-weight: 700;
             cursor: pointer;
-            border: 1px solid rgba(2, 132, 199, 0.2);
+            border: 1px solid rgba(4, 120, 87, 0.2);
             transition: all 0.2s;
         }
 
@@ -231,7 +231,7 @@
             transition: all 0.2s;
         }
         .quiz-opt-btn:hover {
-            background: rgba(99, 102, 241, 0.08) !important;
+            background: rgba(2, 132, 199, 0.08) !important;
             border-color: var(--primary-color) !important;
             color: var(--primary-color) !important;
         }
@@ -288,7 +288,7 @@
         }
 
         ruby { ruby-position: over; cursor: pointer; padding: 0 2px; border-radius: 4px; transition: all 0.2s ease; }
-        ruby:hover, ruby.is-active { background: rgba(217, 119, 6, 0.12); color: var(--ruby-color); }
+        ruby:hover, ruby.is-active { background: rgba(180, 83, 9, 0.12); color: var(--ruby-color); }
 
         #content rt {
             opacity: 0;
@@ -335,7 +335,7 @@
 
         /* 选择题按钮状态 */
         .quiz-choice-btn { background: var(--card-bg) !important; color: var(--text-color) !important; border: 1px solid var(--input-border) !important; font-weight: 600; transition: all 0.15s ease !important; }
-        .quiz-choice-btn.selected { background: rgba(99, 102, 241, 0.08) !important; border: 2px solid var(--primary-color) !important; color: var(--primary-color) !important; font-weight: 800 !important; }
+        .quiz-choice-btn.selected { background: rgba(2, 132, 199, 0.08) !important; border: 2px solid var(--primary-color) !important; color: var(--primary-color) !important; font-weight: 800 !important; }
         .quiz-choice-btn.correct-answer-hint { background: var(--accent-bg) !important; border: 2px solid var(--accent-color) !important; color: var(--accent-color) !important; font-weight: 800 !important; }
 
         /* 简答题文本框样式 */
@@ -358,7 +358,7 @@
         .essay-textarea:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+            box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
         }
 
         /* 简答题参考答案容器 */
@@ -375,7 +375,7 @@
             line-height: 1.7;
         }
 
-        /* 🌟 文本赏析与考点解析（采用暮光极简风紫藤色） */
+        /* 🌟 文本赏析与考点解析（采用远山青黛无紫配色，日夜皆清爽） */
         .teacher-p-analysis, [id^="q-analysis-"], [id^="essay-analysis-"] {
             background: var(--ai-bg) !important;
             border-left: 4px solid var(--ai-color) !important;
@@ -387,7 +387,7 @@
             font-weight: 700;
         }
         [data-theme="dark"] .teacher-p-analysis, [data-theme="dark"] [id^="q-analysis-"], [data-theme="dark"] [id^="essay-analysis-"] {
-            color: #e9d5ff !important;
+            color: #5eead4 !important; /* 夜间模式下文字为高亮青绿 */
         }
 
         #teacherArticleAnalysis {
@@ -400,7 +400,7 @@
             font-weight: 700;
         }
         [data-theme="dark"] #teacherArticleAnalysis {
-            color: #e9d5ff !important;
+            color: #5eead4 !important;
         }
 
         @media (max-width: 1024px) {
