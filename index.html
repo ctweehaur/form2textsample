@@ -17,7 +17,7 @@
             --text-muted: #5c554b;         /* 淡墨辅助字 */
             --card-bg: #fffcf7;          /* 仿宣纸白卡片 */
             
-            /* 🔷 核心主色调：克莱因灰蓝（按钮、核心强调、选中态、边框） */
+            /* 🔷 核心主色调：克莱因灰蓝（按钮, 核心强调, 选中态, 边框） */
             --primary-color: #334155;
             --primary-hover: #1e293b;
 
@@ -33,7 +33,7 @@
             --accent-color: #334155;
             --accent-bg: #e2e8f0;
 
-            --ruby-color: #64748b;         /* 拼音：克制冷灰，优雅理性 */
+            --ruby-color: #64748b;         /* 拼音：克制冷灰, 优雅理性 */
             --input-border: #cbd5e1;       /* 质感灰边框 */
             --shadow-sm: 0 4px 6px -1px rgba(51, 65, 85, 0.05), 0 2px 4px -1px rgba(51, 65, 85, 0.02);
             --shadow-md: 0 15px 30px -5px rgba(51, 65, 85, 0.08), 0 8px 10px -6px rgba(51, 65, 85, 0.03);
@@ -336,10 +336,32 @@
         .pop-btn-copy:hover { opacity: 0.9; }
         .pop-arrow { position: absolute; bottom: -8px; left: 50%; width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 8px solid var(--card-bg); transform: translateX(-50%); }
 
-        /* 选择题按钮状态 */
-        .quiz-choice-btn { background: var(--card-bg) !important; color: var(--text-color) !important; border: 1px solid var(--input-border) !important; font-weight: 600; transition: all 0.15s ease !important; }
-        .quiz-choice-btn.selected { background: var(--accent-bg) !important; border: 2px solid var(--primary-color) !important; color: var(--primary-color) !important; font-weight: 800 !important; }
-        .quiz-choice-btn.correct-answer-hint { background: var(--primary-color) !important; border: 2px solid var(--primary-color) !important; color: white !important; font-weight: 800 !important; }
+        /* 🔘 客观选择题选项按钮样式（已修复 hover 悬停效果） */
+        .quiz-choice-btn { 
+            background: var(--card-bg) !important; 
+            color: var(--text-color) !important; 
+            border: 1px solid var(--input-border) !important; 
+            font-weight: 600; 
+            transition: all 0.15s ease !important; 
+        }
+        .quiz-choice-btn:hover {
+            background: var(--accent-bg) !important;
+            border-color: var(--primary-color) !important;
+            color: var(--primary-color) !important;
+            transform: translateY(-1px);
+        }
+        .quiz-choice-btn.selected { 
+            background: var(--accent-bg) !important; 
+            border: 2px solid var(--primary-color) !important; 
+            color: var(--primary-color) !important; 
+            font-weight: 800 !important; 
+        }
+        .quiz-choice-btn.correct-answer-hint { 
+            background: var(--primary-color) !important; 
+            border: 2px solid var(--primary-color) !important; 
+            color: white !important; 
+            font-weight: 800 !important; 
+        }
 
         /* 简答题文本框样式 */
         .essay-textarea {
