@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>华文智能互动学习阅读器 - 宣纸竹青水墨风</title>
+    <title>华文智能互动学习阅读器 - 宣纸朱砂水墨风</title>
     <style>
         /* ==========================================================================
-           📜 宣纸底色 × 竹青绿点睛水墨风配色系统 (Xuan Paper & Bamboo Green Theme)
+           📜 宣纸底色 × 朱砂红点睛水墨风配色系统 (Xuan Paper & Cinnabar Red Theme)
            ========================================================================== */
 
         :root {
@@ -17,23 +17,23 @@
             --text-muted: #5c554b;         /* 淡墨辅助字 */
             --card-bg: #fffcf7;          /* 仿宣纸白卡片 */
             
-            /* 🌿 核心主色调与点睛色：竹青绿（按钮、核心强调、选中态） */
-            --primary-color: #047857;
-            --primary-hover: #065f46;
+            /* 🔴 核心主色调与点睛色：朱砂红（按钮、核心强调、选中态、印章质感） */
+            --primary-color: #b91c1c;
+            --primary-hover: #991b1b;
 
-            /* 🌿 生词本专用色：浅竹青绿底深绿字 */
-            --notebook-color: #065f46;
-            --notebook-bg: #e6f4ea;
+            /* 🟤 生词本专用色：琥珀金褐底深棕字 */
+            --notebook-color: #78350f;
+            --notebook-bg: #fef3c7;
 
-            /* 🖋️ 文本赏析专用色：远山青黛墨绿 */
+            /* 🖋️ 文本赏析专用色：远山青黛墨色 */
             --ai-color: #0f5257;
             --ai-bg: #eaf4f4;
 
-            /* 🟢 正确/成功提示色 */
-            --accent-color: #047857;
-            --accent-bg: #e6f4ea;
+            /* 🔴 正确/成功提示色：朱砂红 */
+            --accent-color: #b91c1c;
+            --accent-bg: #fde8e8;
 
-            --ruby-color: #92400e;         /* 拼音：古铜金，与竹青极配 */
+            --ruby-color: #92400e;         /* 拼音：古铜金，与朱砂极配 */
             --input-border: #d4c5a9;       /* 宣纸质感边框 */
             --shadow-sm: 0 4px 6px -1px rgba(60, 50, 40, 0.06), 0 2px 4px -1px rgba(60, 50, 40, 0.03);
             --shadow-md: 0 15px 30px -5px rgba(60, 50, 40, 0.08), 0 8px 10px -6px rgba(60, 50, 40, 0.04);
@@ -41,27 +41,27 @@
             --radius-md: 10px;
         }
 
-        /* 🌙 暗黑模式：深夜墨玉绿版（摒弃刺眼荧光绿，采用高级低饱和墨玉青） */
+        /* 🌙 暗黑模式：深夜墨纸配暗夜绯红（温润不刺眼） */
         [data-theme="dark"] {
-            --bg-color: #101412;
-            --bg-gradient: radial-gradient(circle at top right, #171f1b 0%, #101412 100%);
-            --text-color: #e5e7eb;         /* 柔和米白字 */
-            --text-muted: #9ca3af;
-            --card-bg: #18201c;            /* 深夜墨玉卡片底 */
+            --bg-color: #121619;
+            --bg-gradient: radial-gradient(circle at top right, #1a2126 0%, #121619 100%);
+            --text-color: #f3f0e6;         /* 仿宣纸米白字 */
+            --text-muted: #a39e93;
+            --card-bg: #192025;            /* 深夜墨纸卡片底 */
             
-            --primary-color: #2dd4bf;      /* 优雅的青玉色，柔和不刺眼 */
-            --primary-hover: #5eead4;
+            --primary-color: #f87171;      /* 优雅的暗夜绯红 */
+            --primary-hover: #fca5a5;
             
-            --notebook-color: #2dd4bf;
-            --notebook-bg: rgba(45, 212, 191, 0.12);
+            --notebook-color: #fcd34d;
+            --notebook-bg: rgba(252, 211, 77, 0.12);
 
             --ai-color: #5eead4;       /* 亮青黛 */
-            --ai-bg: #132a28;          /* 深空青幽底 */
+            --ai-bg: #0e2a2d;          /* 深空青幽底 */
 
-            --accent-color: #2dd4bf;
-            --accent-bg: rgba(45, 212, 191, 0.12);
+            --accent-color: #f87171;
+            --accent-bg: rgba(248, 113, 113, 0.15);
             --ruby-color: #fbbf24;
-            --input-border: #2d3732;
+            --input-border: #3b464f;
             --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
             --shadow-md: 0 15px 30px -5px rgba(0, 0, 0, 0.6);
         }
@@ -82,10 +82,10 @@
             background: #b5a484;
         }
         [data-theme="dark"] ::-webkit-scrollbar-thumb {
-            background: #2d3732;
+            background: #3b464f;
         }
         [data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
-            background: #3f4e47;
+            background: #4f5d68;
         }
 
         body {
@@ -157,7 +157,7 @@
         }
 
         .clear-btn {
-            background: #047857;
+            background: #991b1b;
             color: white;
             border: none;
             padding: 5px 14px;
@@ -183,7 +183,7 @@
             font-size: 14px;
             font-weight: 700;
             cursor: pointer;
-            border: 1px solid rgba(4, 120, 87, 0.25);
+            border: 1px solid rgba(120, 53, 15, 0.25);
             transition: all 0.2s;
         }
 
@@ -232,7 +232,7 @@
             transition: all 0.2s;
         }
         .quiz-opt-btn:hover {
-            background: var(--accent-bg) !important;
+            background: rgba(185, 28, 28, 0.06) !important;
             border-color: var(--primary-color) !important;
             color: var(--primary-color) !important;
         }
@@ -291,7 +291,7 @@
 
         ruby { ruby-position: over; cursor: pointer; padding: 0 2px; border-radius: 4px; transition: all 0.2s ease; }
         ruby:hover, ruby.is-active { background: #fef3c7; color: #b45309; }
-        [data-theme="dark"] ruby:hover, [data-theme="dark"] ruby.is-active { background: #1b3830; color: #2dd4bf; }
+        [data-theme="dark"] ruby:hover, [data-theme="dark"] ruby.is-active { background: #3e2723; color: #f87171; }
 
         #content rt {
             opacity: 0;
@@ -361,7 +361,7 @@
         .essay-textarea:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(4, 120, 87, 0.15);
+            box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.15);
         }
 
         /* 简答题参考答案容器 */
@@ -374,11 +374,11 @@
             border-radius: var(--radius-md);
             font-size: 14px;
             font-weight: 600;
-            color: var(--accent-color);
+            color: var(--primary-color);
             line-height: 1.7;
         }
 
-        /* 🌟 文本赏析与考点解析（竹青绿水墨风） */
+        /* 🌟 文本赏析与考点解析（水墨风） */
         .teacher-p-analysis, [id^="q-analysis-"], [id^="essay-analysis-"] {
             background: var(--ai-bg) !important;
             border-left: 4px solid var(--ai-color) !important;
@@ -469,7 +469,7 @@
                 <button id="showCorrectBtn" onclick="revealRealCorrectAnswers()" style="display: none; padding: 12px 32px; background: var(--primary-color); color: white; border: none; border-radius: 25px; font-size: 15px; font-weight: 800; cursor: pointer;">
                     查看客观题答案 👁️
                 </button>
-                <div id="quizResultScore" style="margin-top: 15px; font-size: 17px; font-weight: 800; color: var(--accent-color); display: none; line-height: 1.6;"></div>
+                <div id="quizResultScore" style="margin-top: 15px; font-size: 17px; font-weight: 800; color: var(--primary-color); display: none; line-height: 1.6;"></div>
             </div>
 
             <div style="margin-top: 40px; padding-top: 25px; border-top: 3px solid var(--input-border);">
@@ -855,7 +855,7 @@
 
             const resultBox = document.getElementById('quizResultScore');
             resultBox.style.display = "block";
-            resultBox.innerHTML = `🎉 客观题得分：<span style="font-size: 22px; color: var(--accent-color); font-weight: 800;">${score}</span> / ${totalQuestions} 分`;
+            resultBox.innerHTML = `🎉 客观题得分：<span style="font-size: 22px; color: var(--primary-color); font-weight: 800;">${score}</span> / ${totalQuestions} 分`;
             
             document.getElementById('submitQuizBtn').style.display = "none";
             document.getElementById('retryQuizBtn').style.display = "inline-block";
