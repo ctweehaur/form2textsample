@@ -6,7 +6,7 @@
     <title>华文智能互动学习阅读器</title>
     <style>
         /* ==========================================================================
-           🎨 现代华文学习平台全局样式 - 双栏分屏框架版（含简答题本地存储持久化）
+           🎨 现代华文学习平台全局样式 - 双栏分屏框架版（含纤细美观滚动条优化）
            ========================================================================== */
 
         :root {
@@ -31,6 +31,28 @@
             --input-border: #475569;
             --shadow-sm: 0 2px 8px rgba(0,0,0,0.2);
             --shadow-md: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        /* 🌟 滚动条美化：纤细、现代、悬停加深（日间与暗黑模式双色适配） */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        [data-theme="dark"] ::-webkit-scrollbar-thumb {
+            background: #475569;
+        }
+        [data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
         }
 
         body {
@@ -628,7 +650,6 @@
             });
         }
 
-        // 渲染简答题（已集成 LocalStorage 本地保存功能）
         function renderEssayQuizzes() {
             const container = document.getElementById('essayContainer');
             if (!container) return;
@@ -670,14 +691,12 @@
                 textarea.className = "essay-textarea";
                 textarea.placeholder = "请在此输入您的解答思路（内容将自动实时保存在本地浏览器中）...";
                 
-                // 1. 读取本地存储的草稿
                 const storageKey = `essay_draft_${essay.id}`;
                 const savedDraft = localStorage.getItem(storageKey);
                 if (savedDraft) {
                     textarea.value = savedDraft;
                 }
 
-                // 2. 监听输入事件，实时写入 LocalStorage
                 textarea.oninput = () => {
                     localStorage.setItem(storageKey, textarea.value);
                 };
@@ -708,7 +727,6 @@
             });
         }
 
-        // 清空所有简答题草稿
         function clearEssayDrafts() {
             if (confirm("⚠️ 确定要清空所有简答题的本地输入草稿吗？")) {
                 if (typeof essayDataList !== 'undefined') {
@@ -981,7 +999,6 @@
             
             const optDiv = document.getElementById('quizOptions'); 
             optDiv.innerHTML = ""; 
-            options.options = options; // safe assignment
             options.forEach(opt => { 
                 const b = document.createElement('button'); 
                 b.className = 'quiz-opt-btn'; 
