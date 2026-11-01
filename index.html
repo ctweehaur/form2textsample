@@ -3,27 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>华文智能互动学习阅读器 - 高对比度清晰版</title>
+    <title>华文智能互动学习阅读器 - 精英版</title>
     <style>
         /* ==========================================================================
-           🎨 高对比度清晰版色彩系统 (High-Contrast Color System)
+           🎨 现代华文学习平台全局样式 - 2026 旗舰美学版（修复夜间赏析可见性）
            ========================================================================== */
 
         :root {
-            /* ☀️ 日间模式：高对比度、清晰锐利、温润护眼 */
             --bg-color: #fdfbf7;
             --bg-gradient: radial-gradient(circle at top right, #fffdfa 0%, #f1eddf 100%);
-            --text-color: #111827;         /* 加深到接近纯黑，极大提升清晰度 */
-            --text-muted: #4b5563;         /* 辅助文字加深，告别过浅看不清的问题 */
+            --text-color: #111827;
+            --text-muted: #4b5563;
             --card-bg: #ffffff;
             --primary-color: #2563eb;
             --primary-hover: #1d4ed8;
-            --accent-color: #047857;       /* 生词本/正确提示用深翡翠绿，清晰醒目 */
-            --accent-bg: #e6f4ea;          /* 生词本浅底色 */
+            --accent-color: #047857;
+            --accent-bg: #e6f4ea;
             --ai-color: #7c3aed;
             --ai-bg: #f3e8ff;
-            --ruby-color: #b45309;         /* 拼音颜色：深琥珀色，清晰好认 */
-            --input-border: #9ca3af;       /* 输入框边框加深，一眼辨认 */
+            --ruby-color: #b45309;
+            --input-border: #9ca3af;
             --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
             --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.06);
             --radius-lg: 20px;
@@ -41,8 +40,8 @@
             --primary-hover: #93c5fd;
             --accent-color: #34d399;
             --accent-bg: rgba(16, 185, 129, 0.15);
-            --ai-color: #a78bfa;
-            --ai-bg: rgba(139, 92, 246, 0.15);
+            --ai-color: #c084fc;       /* 亮紫色 */
+            --ai-bg: #2d1b4e;          /* 深邃且清晰的夜间紫背景 */
             --ruby-color: #fbbf24;
             --input-border: #475569;
             --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
@@ -274,6 +273,7 @@
 
         ruby { ruby-position: over; cursor: pointer; padding: 0 2px; border-radius: 4px; transition: all 0.2s ease; }
         ruby:hover, ruby.is-active { background: #fef3c7; color: #b45309; }
+        [data-theme="dark"] ruby:hover, [data-theme="dark"] ruby.is-active { background: #451a03; color: #fbbf24; }
 
         #content rt {
             opacity: 0;
@@ -306,14 +306,14 @@
             to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        .pop-title-row { display: flex; align-items: baseline; gap: 10px; margin-bottom: 12px; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px; }
+        .pop-title-row { display: flex; align-items: baseline; gap: 10px; margin-bottom: 12px; border-bottom: 2px solid var(--input-border); padding-bottom: 10px; }
         .pop-title { font-size: 24px; font-weight: 800; }
         .pop-pinyin { font-size: 14px; color: var(--ruby-color); font-weight: 800; }
         .pop-box { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; margin-bottom: 10px; line-height: 1.5; font-weight: 600; }
         .pop-tag { font-size: 11px; font-weight: 800; color: white; padding: 2px 6px; border-radius: 4px; flex-shrink: 0; }
-        .pop-en { color: #1d4ed8; } .pop-en .pop-tag { background: #2563eb; }
-        .pop-bm { color: #b91c1c; } .pop-bm .pop-tag { background: #dc2626; }
-        .pop-footer { display: flex; justify-content: flex-end; margin-top: 15px; padding-top: 10px; border-top: 2px solid #e5e7eb; }
+        .pop-en { color: #2563eb; } .pop-en .pop-tag { background: #2563eb; }
+        .pop-bm { color: #dc2626; } .pop-bm .pop-tag { background: #dc2626; }
+        .pop-footer { display: flex; justify-content: flex-end; margin-top: 15px; padding-top: 10px; border-top: 2px solid var(--input-border); }
         .pop-btn-copy { background: #059669; color: white; border: none; padding: 6px 16px; border-radius: var(--radius-md); font-size: 13px; cursor: pointer; font-weight: 800; transition: background 0.2s; }
         .pop-btn-copy:hover { background: #047857; }
         .pop-arrow { position: absolute; bottom: -8px; left: 50%; width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 8px solid var(--card-bg); transform: translateX(-50%); }
@@ -359,8 +359,12 @@
             color: #065f46;
             line-height: 1.7;
         }
+        [data-theme="dark"] .essay-answer-box {
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+        }
 
-        /* 赏析高亮块 (老师视角) */
+        /* 🌟 赏析高亮块 (日夜间双高对比适配修复) */
         .teacher-p-analysis, [id^="q-analysis-"], [id^="essay-analysis-"] {
             background: var(--ai-bg) !important;
             border-left: 4px solid var(--ai-color) !important;
@@ -371,6 +375,10 @@
             font-size: 14px;
             font-weight: 600;
         }
+        [data-theme="dark"] .teacher-p-analysis, [data-theme="dark"] [id^="q-analysis-"], [data-theme="dark"] [id^="essay-analysis-"] {
+            color: #e9d5ff !important; /* 夜间模式下文字变为极清爽的亮薰衣草紫 */
+        }
+
         #teacherArticleAnalysis {
             background: var(--ai-bg) !important;
             border-left: 4px solid var(--ai-color) !important;
@@ -379,6 +387,9 @@
             margin-bottom: 25px;
             border-radius: var(--radius-md);
             font-weight: 600;
+        }
+        [data-theme="dark"] #teacherArticleAnalysis {
+            color: #e9d5ff !important;
         }
 
         @media (max-width: 1024px) {
