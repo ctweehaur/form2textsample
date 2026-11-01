@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>华文智能互动学习阅读器 - 精英版</title>
+    <title>华文智能互动学习阅读器 - 科技蓝金精英版</title>
     <style>
         /* ==========================================================================
-           🎨 现代华文学习平台全局样式 - 2026 旗舰美学版（修复夜间赏析可见性）
+           🎨 方案A：科技蓝金商务风色彩系统 (Tech Blue & Warm Gold Theme)
            ========================================================================== */
 
         :root {
@@ -15,12 +15,23 @@
             --text-color: #111827;
             --text-muted: #4b5563;
             --card-bg: #ffffff;
+            
+            /* 🔵 核心主色调：科技蓝（用于主要按钮、选中状态） */
             --primary-color: #2563eb;
             --primary-hover: #1d4ed8;
-            --accent-color: #047857;
+
+            /* 📘 生词本专用色：科技蓝体系（代表知识与记忆） */
+            --notebook-color: #0284c7;
+            --notebook-bg: #e0f2fe;
+
+            /* 🌟 文本赏析专用色：暖琥珀金（代表核心亮点与点拨） */
+            --ai-color: #d97706;
+            --ai-bg: #fef3c7;
+
+            /* 🟢 正确/成功提示色 */
+            --accent-color: #059669;
             --accent-bg: #e6f4ea;
-            --ai-color: #7c3aed;
-            --ai-bg: #f3e8ff;
+
             --ruby-color: #b45309;
             --input-border: #9ca3af;
             --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
@@ -29,7 +40,7 @@
             --radius-md: 12px;
         }
 
-        /* 🌙 暗黑模式旗舰适配 */
+        /* 🌙 暗黑模式旗舰适配（方案A夜间版：深空蓝配星光金） */
         [data-theme="dark"] {
             --bg-color: #0f172a;
             --bg-gradient: radial-gradient(circle at top right, #1e293b 0%, #0f172a 100%);
@@ -38,10 +49,15 @@
             --card-bg: #1e293b;
             --primary-color: #60a5fa;
             --primary-hover: #93c5fd;
+            
+            --notebook-color: #38bdf8;
+            --notebook-bg: rgba(56, 189, 248, 0.15);
+
+            --ai-color: #fbbf24;       /* 夜间星光金 */
+            --ai-bg: #451a03;          /* 深邃暖琥珀底 */
+
             --accent-color: #34d399;
             --accent-bg: rgba(16, 185, 129, 0.15);
-            --ai-color: #c084fc;       /* 亮紫色 */
-            --ai-bg: #2d1b4e;          /* 深邃且清晰的夜间紫背景 */
             --ruby-color: #fbbf24;
             --input-border: #475569;
             --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
@@ -117,7 +133,7 @@
             color: var(--primary-color);
         }
 
-        /* 生词本高对比美化 */
+        /* 生词本美化（采用科技蓝主题） */
         .vocab-notebook {
             width: 100%;
             background: var(--card-bg);
@@ -158,19 +174,19 @@
         }
 
         .notebook-item {
-            background: var(--accent-bg);
-            color: var(--accent-color);
+            background: var(--notebook-bg);
+            color: var(--notebook-color);
             padding: 6px 16px;
             border-radius: 20px;
             font-size: 14px;
             font-weight: 700;
             cursor: pointer;
-            border: 1px solid rgba(4, 120, 87, 0.3);
+            border: 1px solid rgba(2, 132, 199, 0.3);
             transition: all 0.2s;
         }
 
         .notebook-item:hover {
-            background: var(--accent-color);
+            background: var(--notebook-color);
             color: white;
             transform: translateY(-1px);
         }
@@ -286,7 +302,7 @@
         }
         #content ruby:hover rt, #content ruby.is-active rt { opacity: 1; }
 
-        /* 气泡弹窗高对比清晰版 */
+        /* 气泡弹窗 */
         .buddy-popover {
             display: none;
             position: fixed;
@@ -314,8 +330,8 @@
         .pop-en { color: #2563eb; } .pop-en .pop-tag { background: #2563eb; }
         .pop-bm { color: #dc2626; } .pop-bm .pop-tag { background: #dc2626; }
         .pop-footer { display: flex; justify-content: flex-end; margin-top: 15px; padding-top: 10px; border-top: 2px solid var(--input-border); }
-        .pop-btn-copy { background: #059669; color: white; border: none; padding: 6px 16px; border-radius: var(--radius-md); font-size: 13px; cursor: pointer; font-weight: 800; transition: background 0.2s; }
-        .pop-btn-copy:hover { background: #047857; }
+        .pop-btn-copy { background: var(--notebook-color); color: white; border: none; padding: 6px 16px; border-radius: var(--radius-md); font-size: 13px; cursor: pointer; font-weight: 800; transition: background 0.2s; }
+        .pop-btn-copy:hover { opacity: 0.9; }
         .pop-arrow { position: absolute; bottom: -8px; left: 50%; width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 8px solid var(--card-bg); transform: translateX(-50%); }
 
         /* 选择题按钮状态 */
@@ -364,32 +380,32 @@
             color: #34d399;
         }
 
-        /* 🌟 赏析高亮块 (日夜间双高对比适配修复) */
+        /* 🌟 文本赏析与考点解析（统一采用暖琥珀金配色） */
         .teacher-p-analysis, [id^="q-analysis-"], [id^="essay-analysis-"] {
             background: var(--ai-bg) !important;
             border-left: 4px solid var(--ai-color) !important;
-            color: #5b21b6 !important;
+            color: #b45309 !important;
             padding: 12px 16px;
             margin: 10px 0 20px 0;
             border-radius: var(--radius-md);
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 700;
         }
         [data-theme="dark"] .teacher-p-analysis, [data-theme="dark"] [id^="q-analysis-"], [data-theme="dark"] [id^="essay-analysis-"] {
-            color: #e9d5ff !important; /* 夜间模式下文字变为极清爽的亮薰衣草紫 */
+            color: #fde68a !important; /* 夜间模式下文字为高亮暖金 */
         }
 
         #teacherArticleAnalysis {
             background: var(--ai-bg) !important;
             border-left: 4px solid var(--ai-color) !important;
-            color: #5b21b6 !important;
+            color: #b45309 !important;
             padding: 18px;
             margin-bottom: 25px;
             border-radius: var(--radius-md);
-            font-weight: 600;
+            font-weight: 700;
         }
         [data-theme="dark"] #teacherArticleAnalysis {
-            color: #e9d5ff !important;
+            color: #fde68a !important;
         }
 
         @media (max-width: 1024px) {
@@ -405,7 +421,7 @@
         <div class="control-panel">
             <button id="themeToggleBtn" onclick="toggleTheme()">🌓 切换主题</button>
             <button id="gameToggleBtn" onclick="toggleGameMode()">🎯 生词测试</button>
-            <button id="teacherToggleBtn" onclick="toggleTeacherMode()" style="background: var(--ai-color); color: white; border: none;">👁️ 文本赏析</button>
+            <button id="teacherToggleBtn" onclick="toggleTeacherMode()" style="background: var(--ai-color); color: #fff; border: none;">👁️ 文本赏析</button>
         </div>
 
         <div class="vocab-notebook">
@@ -728,7 +744,7 @@
 
                 const toggleAnswerBtn = document.createElement('button');
                 toggleAnswerBtn.innerText = "👁️ 查看参考答案";
-                toggleAnswerBtn.style.cssText = "margin-top: 10px; padding: 6px 14px; background: var(--ai-color); color: white; border: none; border-radius: 15px; font-size: 12.5px; font-weight: 700; cursor: pointer; transition: opacity 0.2s;";
+                toggleAnswerBtn.style.cssText = "margin-top: 10px; padding: 6px 14px; background: var(--ai-color); color: #fff; border: none; border-radius: 15px; font-size: 12.5px; font-weight: 700; cursor: pointer; transition: opacity 0.2s;";
                 
                 const answerBox = document.createElement('div');
                 answerBox.className = "essay-answer-box";
