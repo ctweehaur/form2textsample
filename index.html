@@ -6,7 +6,7 @@
     <title>华文智能互动学习阅读器</title>
     <style>
         /* ==========================================================================
-           🎨 现代华文学习平台全局样式 - 双栏分屏框架版（含简答题扩展）
+           🎨 现代华文学习平台全局样式 - 双栏分屏框架版（含简答题本地存储持久化）
            ========================================================================== */
 
         :root {
@@ -383,16 +383,10 @@
             <h2 style="font-size: 20px; margin-bottom: 20px; border-bottom: 2px dashed #bdc3c7; padding-bottom: 10px;">📝 一、选择题（客观题）</h2>
             <div id="quizContainer"></div>
 
-            <!-- 二、简答题部分 -->
-            <div style="margin-top: 40px;">
-                <h2 style="font-size: 20px; margin-bottom: 20px; border-bottom: 2px dashed #bdc3c7; padding-bottom: 10px;">✍️ 二、简答题（主观题）</h2>
-                <div id="essayContainer"></div>
-            </div>
-
-            <!-- 提交与解析控制按钮 -->
-            <div style="margin-top: 30px; padding-top: 20px; border-top: 2px solid #eaefed; text-align: center;">
+            <!-- 客观题提交与结果展示区 -->
+            <div style="margin-top: 25px; padding-top: 15px; border-top: 2px solid #eaefed; text-align: center;">
                 <button id="submitQuizBtn" onclick="submitAndShowWrongOnly()" style="padding: 12px 30px; background: #34495e; color: white; border: none; border-radius: 25px; font-size: 15px; font-weight: bold; cursor: pointer;">
-                    提交检查 🚀
+                    提交客观题检查 🚀
                 </button>
                 <button id="retryQuizBtn" onclick="retryQuizAnswers()" style="display: none; padding: 12px 30px; background: #e67e22; color: white; border: none; border-radius: 25px; font-size: 15px; font-weight: bold; cursor: pointer; margin-right: 10px;">
                     重新作答 🔄
@@ -401,6 +395,15 @@
                     查看客观题答案 👁️
                 </button>
                 <div id="quizResultScore" style="margin-top: 15px; font-size: 16px; font-weight: bold; color: #2ecc71; display: none; line-height: 1.6;"></div>
+            </div>
+
+            <!-- 二、简答题部分（带有 LocalStorage 自动保存草稿功能） -->
+            <div style="margin-top: 40px; padding-top: 25px; border-top: 3px solid #dfe6e9;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 2px dashed #bdc3c7; padding-bottom: 10px;">
+                    <h2 style="font-size: 20px; margin: 0; color: #2c3e50;">✍️ 二、简答题（主观题）</h2>
+                    <button onclick="clearEssayDrafts()" style="background: #e74c3c; color: white; border: none; padding: 4px 10px; border-radius: 12px; font-size: 11px; cursor: pointer;" title="清空所有简答题输入草稿">清空简答草稿 🗑️</button>
+                </div>
+                <div id="essayContainer"></div>
             </div>
         </div>
     </div>
@@ -443,7 +446,6 @@
                 renderNB(); 
             }
 
-            // 渲染右侧客观题与简答题
             renderMultipleChoiceQuizzes();
             renderEssayQuizzes();
             
@@ -540,7 +542,6 @@
             }
         }
 
-        // 渲染 10 道选择题
         function renderMultipleChoiceQuizzes() {
             const section = document.getElementById('quizSection');
             const container = document.getElementById('quizContainer');
@@ -557,7 +558,7 @@
             document.getElementById('quizResultScore').style.display = "none";
             document.getElementById('submitQuizBtn').style.display = "inline-block";
             document.getElementById('submitQuizBtn').disabled = false;
-            document.getElementById('submitQuizBtn').innerText = "提交检查 🚀";
+            document.getElementById('submitQuizBtn').innerText = "提交客观题检查 🚀";
             document.getElementById('retryQuizBtn').style.display = "none";
             document.getElementById('showCorrectBtn').style.display = "none";
 
@@ -627,7 +628,7 @@
             });
         }
 
-        // 渲染 5 道简答题
+        // 渲染简答题（已集成 LocalStorage 本地保存功能）
         function renderEssayQuizzes() {
             const container = document.getElementById('essayContainer');
             if (!container) return;
@@ -652,7 +653,6 @@
                 eText.innerHTML = `${essay.question}`;
                 eBox.appendChild(eText);
 
-                // 教师考点赏析（文本赏析模式联动）
                 if (essay.teacherAnalysis) {
                     let eAnalysis = document.createElement("div");
                     eAnalysis.id = `essay-analysis-${essay.id}`;
@@ -666,13 +666,24 @@
                     eBox.appendChild(eAnalysis);
                 }
 
-                // 学生输入框
                 const textarea = document.createElement('textarea');
                 textarea.className = "essay-textarea";
-                textarea.placeholder = "请在此输入您的解答思路...";
+                textarea.placeholder = "请在此输入您的解答思路（内容将自动实时保存在本地浏览器中）...";
+                
+                // 1. 读取本地存储的草稿
+                const storageKey = `essay_draft_${essay.id}`;
+                const savedDraft = localStorage.getItem(storageKey);
+                if (savedDraft) {
+                    textarea.value = savedDraft;
+                }
+
+                // 2. 监听输入事件，实时写入 LocalStorage
+                textarea.oninput = () => {
+                    localStorage.setItem(storageKey, textarea.value);
+                };
+
                 eBox.appendChild(textarea);
 
-                // 参考答案与解析展开按钮
                 const toggleAnswerBtn = document.createElement('button');
                 toggleAnswerBtn.innerText = "👁️ 查看参考答案";
                 toggleAnswerBtn.style.cssText = "margin-top: 8px; padding: 5px 12px; background: #8e44ad; color: white; border: none; border-radius: 15px; font-size: 12px; cursor: pointer;";
@@ -695,6 +706,18 @@
                 eBox.appendChild(answerBox);
                 container.appendChild(eBox);
             });
+        }
+
+        // 清空所有简答题草稿
+        function clearEssayDrafts() {
+            if (confirm("⚠️ 确定要清空所有简答题的本地输入草稿吗？")) {
+                if (typeof essayDataList !== 'undefined') {
+                    essayDataList.forEach(essay => {
+                        localStorage.removeItem(`essay_draft_${essay.id}`);
+                    });
+                }
+                renderEssayQuizzes();
+            }
         }
 
         function toggleTeacherMode() {
@@ -776,7 +799,7 @@
 
             const resultBox = document.getElementById('quizResultScore');
             resultBox.style.display = "block";
-            resultBox.innerHTML = `🎉 客观题得分：<span style="font-size: 20px; color: #e67e22;">${score}</span> / ${totalQuestions} 分（简答题请对照参考答案自评）`;
+            resultBox.innerHTML = `🎉 客观题得分：<span style="font-size: 20px; color: #e67e22;">${score}</span> / ${totalQuestions} 分`;
             
             document.getElementById('submitQuizBtn').style.display = "none";
             document.getElementById('retryQuizBtn').style.display = "inline-block";
@@ -950,7 +973,7 @@
             
             const correctStr = (data[2].trim() + "；" + data[3].trim()); 
             let options = [correctStr]; 
-            let others = lessonData.filter(d => d[1] !== "" && d[0] !== data[0]).map(d => (d[2].trim() + "；" + data[3].trim())); 
+            let others = lessonData.filter(d => d[1] !== "" && d[0] !== data[0]).map(d => (d[2].trim() + "；" + d[3].trim())); 
             others = [...new Set(others)].filter(s => s !== correctStr).sort(() => Math.random() - 0.5); 
             
             for(let i=0; i<3; i++) { if(others[i]) options.push(others[i]); } 
@@ -958,6 +981,7 @@
             
             const optDiv = document.getElementById('quizOptions'); 
             optDiv.innerHTML = ""; 
+            options.options = options; // safe assignment
             options.forEach(opt => { 
                 const b = document.createElement('button'); 
                 b.className = 'quiz-opt-btn'; 
