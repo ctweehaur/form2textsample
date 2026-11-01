@@ -3,37 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>华文智能互动学习阅读器</title>
+    <title>华文智能互动学习阅读器 - 精英版</title>
     <style>
         /* ==========================================================================
-           🎨 现代华文学习平台全局样式 - 双栏分屏框架版（含纤细美观滚动条优化）
+           🎨 现代华文学习平台全局样式 - 2026 旗舰美学版
            ========================================================================== */
 
         :root {
-            --bg-color: linear-gradient(135deg, #f4f7f6 0%, #eaefed 100%);
-            --text-color: #2c3e50;
+            --bg-color: #f8fafc;
+            --bg-gradient: radial-gradient(circle at top right, #f1f5f9 0%, #e2e8f0 100%);
+            --text-color: #1e293b;
+            --text-muted: #64748b;
             --card-bg: #ffffff;
-            --primary-color: #34495e;
-            --accent-color: #2ecc71;
-            --ai-color: #9b59b6;
-            --ruby-color: #e67e22;
+            --primary-color: #3b82f6;
+            --primary-hover: #2563eb;
+            --accent-color: #10b981;
+            --accent-bg: #ecfdf5;
+            --ai-color: #8b5cf6;
+            --ai-bg: #f5f3ff;
+            --ruby-color: #f59e0b;
             --input-border: #cbd5e1;
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
-            --shadow-md: 0 10px 25px rgba(44, 62, 80, 0.05);
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+            --radius-lg: 20px;
+            --radius-md: 12px;
         }
 
-        /* 🌙 暗黑模式适配 */
+        /* 🌙 暗黑模式旗舰适配 */
         [data-theme="dark"] {
-            --bg-color: linear-gradient(135deg, #141414 0%, #202020 100%);
-            --text-color: #e0e0e0;
-            --card-bg: #222222;
-            --primary-color: #bdc3c7;
-            --input-border: #475569;
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.2);
-            --shadow-md: 0 10px 25px rgba(0,0,0,0.3);
+            --bg-color: #0f172a;
+            --bg-gradient: radial-gradient(circle at top right, #1e293b 0%, #0f172a 100%);
+            --text-color: #f1f5f9;
+            --text-muted: #94a3b8;
+            --card-bg: #1e293b;
+            --primary-color: #60a5fa;
+            --primary-hover: #93c5fd;
+            --accent-color: #34d399;
+            --accent-bg: rgba(16, 185, 129, 0.1);
+            --ai-color: #a78bfa;
+            --ai-bg: rgba(139, 92, 246, 0.1);
+            --ruby-color: #fbbf24;
+            --input-border: #334155;
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+            --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
         }
 
-        /* 🌟 滚动条美化：纤细、现代、悬停加深（日间与暗黑模式双色适配） */
+        /* 🌟 优雅的纤细滚动条 */
         ::-webkit-scrollbar {
             width: 6px;
             height: 6px;
@@ -49,184 +64,177 @@
             background: #94a3b8;
         }
         [data-theme="dark"] ::-webkit-scrollbar-thumb {
-            background: #475569;
+            background: #334155;
         }
         [data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
-            background: #64748b;
+            background: #475569;
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
-            background: var(--bg-color);
+            background: var(--bg-gradient);
             background-attachment: fixed;
             color: var(--text-color);
-            line-height: 1.8;
+            line-height: 1.9;
             margin: 0;
-            padding: 20px;
+            padding: 30px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s ease, color 0.3s ease;
         }
 
-        /* 顶栏控制区 */
+        /* 顶栏与生词本容器 */
         .top-container {
             width: 100%;
             max-width: 1400px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .control-panel {
             display: flex;
-            gap: 12px;
-            margin-bottom: 15px;
+            gap: 14px;
+            margin-bottom: 18px;
         }
 
         .control-panel button {
-            padding: 10px 20px;
-            border: 1px solid rgba(0,0,0,0.05);
+            padding: 10px 22px;
+            border: 1px solid var(--input-border);
             background: var(--card-bg);
             color: var(--text-color);
-            border-radius: 24px;
+            border-radius: var(--radius-md);
             cursor: pointer;
             font-weight: 600;
             font-size: 14px;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: var(--shadow-sm);
         }
 
         .control-panel button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(44, 62, 80, 0.08);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-color);
         }
 
-        /* 生词本 */
+        /* 生词本美化 */
         .vocab-notebook {
             width: 100%;
             background: var(--card-bg);
-            padding: 15px 20px;
-            border-radius: 16px;
+            padding: 18px 24px;
+            border-radius: var(--radius-lg);
             box-shadow: var(--shadow-md);
             box-sizing: border-box;
-            border: 1px solid rgba(0,0,0,0.02);
+            border: 1px solid rgba(0,0,0,0.04);
         }
 
         .notebook-title {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-weight: bold;
+            font-weight: 700;
             font-size: 15px;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             color: var(--text-color);
         }
 
         .clear-btn {
-            background: #e74c3c;
+            background: #ef4444;
             color: white;
             border: none;
-            padding: 4px 12px;
+            padding: 5px 14px;
             border-radius: 20px;
             cursor: pointer;
             font-size: 12px;
-            font-weight: bold;
+            font-weight: 600;
             transition: opacity 0.2s;
         }
-
         .clear-btn:hover { opacity: 0.9; }
 
         .notebook-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 10px;
         }
 
         .notebook-item {
-            background: rgba(52, 152, 219, 0.08);
-            color: #2980b9;
-            padding: 4px 14px;
+            background: var(--accent-bg);
+            color: var(--accent-color);
+            padding: 6px 16px;
             border-radius: 20px;
-            font-size: 13px;
-            font-weight: 500;
+            font-size: 13.5px;
+            font-weight: 600;
             cursor: pointer;
+            border: 1px solid rgba(16, 185, 129, 0.2);
             transition: all 0.2s;
         }
 
-        [data-theme="dark"] .notebook-item {
-            background: rgba(52, 152, 219, 0.2);
-            color: #3498db;
-        }
-
         .notebook-item:hover {
-            background: #3498db;
+            background: var(--accent-color);
             color: white;
-            transform: scale(1.05);
+            transform: translateY(-1px);
         }
 
         /* 🖥️ 左右双栏核心工作区 */
         .workspace-layout {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            gap: 25px;
             width: 100%;
             max-width: 1400px;
             align-items: start;
         }
 
-        /* 生词测试游戏区 */
+        /* 生词测试弹窗区 */
         .game-container {
             width: 100%;
             max-width: 1400px;
             background: var(--card-bg);
-            padding: 25px;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(142, 68, 173, 0.05);
-            margin-bottom: 20px;
+            padding: 30px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            margin-bottom: 25px;
             box-sizing: border-box;
-            border: 1px solid rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(0, 0, 0, 0.04);
         }
 
         .quiz-card { text-align: center; padding: 10px 0; }
-        .quiz-pinyin { font-size: 16px; color: #7f8c8d; margin-bottom: 25px; }
+        .quiz-pinyin { font-size: 16px; color: var(--text-muted); margin-bottom: 25px; }
         .quiz-options { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
         .quiz-opt-btn {
             padding: 14px 20px;
-            background: var(--bg-color);
+            background: var(--card-bg);
             border: 1px solid var(--input-border);
             color: var(--text-color);
-            border-radius: 10px;
+            border-radius: var(--radius-md);
             font-size: 15px;
             cursor: pointer;
             text-align: left;
             transition: all 0.2s;
         }
         .quiz-opt-btn:hover {
-            background: #f0f7fc !important;      
-            border-color: #3498db !important;     
-            color: #2980b9 !important;             
-            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.1) !important; 
-            transform: translateY(-1px);
+            background: rgba(59, 130, 246, 0.05) !important;
+            border-color: var(--primary-color) !important;
+            color: var(--primary-color) !important;
         }
-        .quiz-opt-btn.correct { background: #2ecc71 !important; color: white !important; border-color: #2ecc71; }
-        .quiz-opt-btn.wrong { background: #e74c3c !important; color: white !important; border-color: #e74c3c; cursor: not-allowed; }
+        .quiz-opt-btn.correct { background: #10b981 !important; color: white !important; border-color: #10b981; }
+        .quiz-opt-btn.wrong { background: #ef4444 !important; color: white !important; border-color: #ef4444; cursor: not-allowed; }
 
         #quizQuestion {
-            font-size: 36px;
-            font-weight: bold;
-            color: #2c3e50 !important;
+            font-size: 40px;
+            font-weight: 800;
+            color: var(--text-color);
             letter-spacing: 2px;
         }
-        [data-theme="dark"] #quizQuestion { color: #ffffff !important; }
 
         /* 左侧课文卡片 */
         .article-card {
             width: 100%;
             background: var(--card-bg);
-            padding: 35px 40px;
-            border-radius: 20px;
+            padding: 40px 45px;
+            border-radius: var(--radius-lg);
             box-shadow: var(--shadow-md);
             box-sizing: border-box;
-            border: 1px solid rgba(0,0,0,0.01);
+            border: 1px solid rgba(0,0,0,0.03);
             max-height: 82vh;
             overflow-y: auto;
         }
@@ -235,123 +243,135 @@
         .quiz-side-card {
             width: 100%;
             background: var(--card-bg);
-            padding: 35px 40px;
-            border-radius: 20px;
+            padding: 40px 45px;
+            border-radius: var(--radius-lg);
             box-shadow: var(--shadow-md);
             box-sizing: border-box;
-            border: 1px solid rgba(0,0,0,0.01);
+            border: 1px solid rgba(0,0,0,0.03);
             max-height: 82vh;
             overflow-y: auto;
             display: none;
         }
 
-        h1 { text-align: center; font-size: 28px; font-weight: 800; margin-top: 0; margin-bottom: 30px; letter-spacing: 2px; }
-        #content p { text-align: justify; text-justify: inter-ideograph; margin-bottom: 30px; font-size: 18px; letter-spacing: 1.2px; }
+        h1 { text-align: center; font-size: 30px; font-weight: 800; margin-top: 0; margin-bottom: 35px; letter-spacing: 2px; }
+        #content p { text-align: justify; text-justify: inter-ideograph; margin-bottom: 35px; font-size: 19px; letter-spacing: 1.5px; }
 
         .p-index {
             display: inline-block;
             font-size: 12px;
-            background: #eef3f0;
-            color: #2c3e50;
-            padding: 3px 8px;
+            background: rgba(100, 116, 139, 0.1);
+            color: var(--text-muted);
+            padding: 2px 8px;
             border-radius: 6px;
             font-weight: 600;
             user-select: none;
-            border: 1px solid #d2ded7;
+            margin-right: 4px;
         }
-        [data-theme="dark"] .p-index { background: #2d3748; color: #a0aec0; border-color: #4a5568; }
 
         ruby { ruby-position: over; cursor: pointer; padding: 0 2px; border-radius: 4px; transition: all 0.2s ease; }
-        ruby:hover, ruby.is-active { background: #fff3cd; color: #d35400; }
-        [data-theme="dark"] ruby:hover, [data-theme="dark"] ruby.is-active { background: #4a3716; color: #f39c12; }
+        ruby:hover, ruby.is-active { background: rgba(245, 158, 11, 0.15); color: var(--ruby-color); }
 
         #content rt {
             opacity: 0;
-            transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: opacity 0.2s ease;
             user-select: none;
             font-size: 12px;
             color: var(--ruby-color);
-            padding-bottom: 5px;
+            font-weight: 600;
+            padding-bottom: 6px;
         }
         #content ruby:hover rt, #content ruby.is-active rt { opacity: 1; }
 
-        /* 气泡弹窗 */
+        /* 气泡弹窗精美化 */
         .buddy-popover {
             display: none;
             position: fixed;
             z-index: 9999;
             background: var(--card-bg);
             color: var(--text-color);
-            border-radius: 14px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
-            padding: 18px;
-            width: 270px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+            padding: 20px;
+            width: 280px;
             box-sizing: border-box;
             border: 1px solid var(--input-border);
+            animation: popIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .pop-title-row { display: flex; align-items: baseline; gap: 8px; margin-bottom: 12px; border-bottom: 1px solid var(--input-border); padding-bottom: 8px; }
-        .pop-title { font-size: 22px; font-weight: bold; }
-        .pop-pinyin { font-size: 14px; color: #e67e22; font-weight: 600; }
-        .pop-box { display: flex; gap: 8px; align-items: flex-start; font-size: 14px; margin-bottom: 10px; line-height: 1.5; }
-        .pop-tag { font-size: 11px; font-weight: bold; color: white; padding: 2px 5px; border-radius: 4px; flex-shrink: 0; }
-        .pop-en { color: #2980b9; } .pop-en .pop-tag { background: #3498db; }
-        .pop-bm { color: #c0392b; } .pop-bm .pop-tag { background: #e74c3c; }
-        .pop-footer { display: flex; justify-content: flex-end; margin-top: 14px; padding-top: 10px; border-top: 1px solid var(--input-border); }
-        .pop-btn-copy { background: #2ecc71; color: white; border: none; padding: 6px 16px; border-radius: 8px; font-size: 13px; cursor: pointer; font-weight: bold; }
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.95) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .pop-title-row { display: flex; align-items: baseline; gap: 10px; margin-bottom: 12px; border-bottom: 1px solid var(--input-border); padding-bottom: 10px; }
+        .pop-title { font-size: 24px; font-weight: 800; }
+        .pop-pinyin { font-size: 14px; color: var(--ruby-color); font-weight: 700; }
+        .pop-box { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; margin-bottom: 10px; line-height: 1.5; }
+        .pop-tag { font-size: 11px; font-weight: 700; color: white; padding: 2px 6px; border-radius: 4px; flex-shrink: 0; }
+        .pop-en { color: #3b82f6; } .pop-en .pop-tag { background: #3b82f6; }
+        .pop-bm { color: #ef4444; } .pop-bm .pop-tag { background: #ef4444; }
+        .pop-footer { display: flex; justify-content: flex-end; margin-top: 15px; padding-top: 10px; border-top: 1px solid var(--input-border); }
+        .pop-btn-copy { background: #10b981; color: white; border: none; padding: 6px 16px; border-radius: var(--radius-md); font-size: 13px; cursor: pointer; font-weight: 700; transition: background 0.2s; }
+        .pop-btn-copy:hover { background: #059669; }
         .pop-arrow { position: absolute; bottom: -8px; left: 50%; width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 8px solid var(--card-bg); transform: translateX(-50%); }
 
         /* 选择题按钮状态 */
-        .quiz-choice-btn { background: #ffffff !important; color: #2c3e50 !important; border: 1px solid #cbd5e1 !important; transition: all 0.15s ease !important; }
-        .quiz-choice-btn.selected { background: #f0f8ff !important; border: 2px solid #2980b9 !important; color: #2980b9 !important; font-weight: 700 !important; }
-        .quiz-choice-btn.correct-answer-hint { background: #f4fbf7 !important; border: 2px solid #2ecc71 !important; color: #27ae60 !important; font-weight: 700 !important; }
-
-        [data-theme="dark"] .quiz-choice-btn { background: #2d2d2d !important; color: #e0e0e0 !important; border: 1px solid #475569 !important; }
-        [data-theme="dark"] .quiz-choice-btn.selected { background: #1a252f !important; border: 2px solid #3498db !important; color: #5dade2 !important; font-weight: 700 !important; }
-        [data-theme="dark"] .quiz-choice-btn.correct-answer-hint { background: #1e2d24 !important; border: 2px solid #2ecc71 !important; color: #58d68d !important; font-weight: 700 !important; }
+        .quiz-choice-btn { background: var(--card-bg) !important; color: var(--text-color) !important; border: 1px solid var(--input-border) !important; transition: all 0.15s ease !important; }
+        .quiz-choice-btn.selected { background: rgba(59, 130, 246, 0.08) !important; border: 2px solid var(--primary-color) !important; color: var(--primary-color) !important; font-weight: 700 !important; }
+        .quiz-choice-btn.correct-answer-hint { background: var(--accent-bg) !important; border: 2px solid var(--accent-color) !important; color: var(--accent-color) !important; font-weight: 700 !important; }
 
         /* 简答题文本框样式 */
         .essay-textarea {
             width: 100%;
-            height: 80px;
-            padding: 10px;
-            border-radius: 8px;
+            height: 85px;
+            padding: 12px;
+            border-radius: var(--radius-md);
             border: 1px solid var(--input-border);
-            background: var(--bg-color);
+            background: var(--card-bg);
             color: var(--text-color);
             font-family: inherit;
             font-size: 14px;
             resize: vertical;
             box-sizing: border-box;
             margin-top: 8px;
+            transition: border-color 0.2s, box-shadow 0.2s;
         }
         .essay-textarea:focus {
             outline: none;
-            border-color: #3498db;
-            box-shadow: 0 0 5px rgba(52, 152, 219, 0.2);
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
         }
 
         /* 简答题参考答案容器 */
         .essay-answer-box {
             display: none;
             margin-top: 10px;
-            padding: 12px;
-            background: #eef9f2;
-            border-left: 4px solid #2ecc71;
-            border-radius: 4px;
+            padding: 14px;
+            background: var(--accent-bg);
+            border-left: 4px solid var(--accent-color);
+            border-radius: var(--radius-md);
             font-size: 13.5px;
-            color: #1e8449;
-            line-height: 1.6;
-        }
-        [data-theme="dark"] .essay-answer-box {
-            background: #192e22;
-            color: #58d68d;
+            color: var(--accent-color);
+            line-height: 1.7;
         }
 
-        /* 赏析高亮块 */
-        .teacher-p-analysis, [id^="q-analysis-"], [id^="essay-analysis-"] { background: #faf5ff !important; border-left: 3px solid #af7ac5 !important; color: #6c3483 !important; }
-        #teacherArticleAnalysis { background: #f3e5f5 !important; border-left: 4px solid #9b59b6 !important; color: #4a148c !important; }
-        [data-theme='dark'] #teacherArticleAnalysis { background: #251833 !important; border-left: 4px solid #bb86fc !important; color: #e1bee7 !important; }
-        [data-theme='dark'] .teacher-p-analysis, [data-theme='dark'] [id^="q-analysis-"], [data-theme='dark'] [id^="essay-analysis-"] { background: #1d1226 !important; border-left: 3px solid #a278b5 !important; color: #d7bde2 !important; }
+        /* 赏析高亮块 (老师视角) */
+        .teacher-p-analysis, [id^="q-analysis-"], [id^="essay-analysis-"] {
+            background: var(--ai-bg) !important;
+            border-left: 4px solid var(--ai-color) !important;
+            color: var(--ai-color) !important;
+            padding: 12px 16px;
+            margin: 10px 0 20px 0;
+            border-radius: var(--radius-md);
+            font-size: 13.5px;
+        }
+        #teacherArticleAnalysis {
+            background: var(--ai-bg) !important;
+            border-left: 4px solid var(--ai-color) !important;
+            color: var(--ai-color) !important;
+            padding: 18px;
+            margin-bottom: 25px;
+            border-radius: var(--radius-md);
+        }
 
         @media (max-width: 1024px) {
             .workspace-layout { grid-template-columns: 1fr; }
@@ -366,7 +386,7 @@
         <div class="control-panel">
             <button id="themeToggleBtn" onclick="toggleTheme()">🌓 切换主题</button>
             <button id="gameToggleBtn" onclick="toggleGameMode()">🎯 生词测试</button>
-            <button id="teacherToggleBtn" onclick="toggleTeacherMode()" style="background: #9b59b6; color: white;">👁️ 文本赏析</button>
+            <button id="teacherToggleBtn" onclick="toggleTeacherMode()" style="background: var(--ai-color); color: white; border: none;">👁️ 文本赏析</button>
         </div>
 
         <div class="vocab-notebook">
@@ -381,7 +401,7 @@
     <!-- 生词测试全屏浮层 -->
     <div id="gameContainer" class="game-container" style="display: none;">
         <div class="quiz-card">
-            <div id="quizProgress" style="font-size: 14px; color: #7f8c8d; margin-bottom: 5px;"></div>
+            <div id="quizProgress" style="font-size: 14px; color: var(--text-muted); margin-bottom: 8px;"></div>
             <div id="quizQuestion" class="quiz-question"></div>
             <div id="quizPinyin" class="quiz-pinyin"></div>
             <div id="quizOptions" class="quiz-options"></div>
@@ -393,7 +413,7 @@
         <!-- 左侧：课文与总览赏析 -->
         <div class="article-card">
             <h1 id="articleTitle">课文加载中...</h1>
-            <div id="teacherArticleAnalysis" style="display: none; padding: 15px; margin-bottom: 20px; border-radius: 4px; font-size: 14px; position: relative;">
+            <div id="teacherArticleAnalysis" style="display: none; position: relative;">
                 <div id="teacherArticleAnalysisContent"></div>
             </div>
             <div id="content"></div>
@@ -401,29 +421,26 @@
 
         <!-- 右侧：客观题及简答题区 -->
         <div id="quizSection" class="quiz-side-card">
-            <!-- 一、选择题部分 -->
-            <h2 style="font-size: 20px; margin-bottom: 20px; border-bottom: 2px dashed #bdc3c7; padding-bottom: 10px;">📝 一、选择题（客观题）</h2>
+            <h2 style="font-size: 20px; margin-bottom: 20px; border-bottom: 2px dashed var(--input-border); padding-bottom: 10px;">📝 一、选择题（客观题）</h2>
             <div id="quizContainer"></div>
 
-            <!-- 客观题提交与结果展示区 -->
-            <div style="margin-top: 25px; padding-top: 15px; border-top: 2px solid #eaefed; text-align: center;">
-                <button id="submitQuizBtn" onclick="submitAndShowWrongOnly()" style="padding: 12px 30px; background: #34495e; color: white; border: none; border-radius: 25px; font-size: 15px; font-weight: bold; cursor: pointer;">
+            <div style="margin-top: 25px; padding-top: 15px; border-top: 2px solid rgba(0,0,0,0.05); text-align: center;">
+                <button id="submitQuizBtn" onclick="submitAndShowWrongOnly()" style="padding: 12px 32px; background: var(--primary-color); color: white; border: none; border-radius: 25px; font-size: 15px; font-weight: 700; cursor: pointer; transition: background 0.2s;">
                     提交客观题检查 🚀
                 </button>
-                <button id="retryQuizBtn" onclick="retryQuizAnswers()" style="display: none; padding: 12px 30px; background: #e67e22; color: white; border: none; border-radius: 25px; font-size: 15px; font-weight: bold; cursor: pointer; margin-right: 10px;">
+                <button id="retryQuizBtn" onclick="retryQuizAnswers()" style="display: none; padding: 12px 32px; background: #f59e0b; color: white; border: none; border-radius: 25px; font-size: 15px; font-weight: 700; cursor: pointer; margin-right: 10px;">
                     重新作答 🔄
                 </button>
-                <button id="showCorrectBtn" onclick="revealRealCorrectAnswers()" style="display: none; padding: 12px 30px; background: #2ecc71; color: white; border: none; border-radius: 25px; font-size: 15px; font-weight: bold; cursor: pointer;">
+                <button id="showCorrectBtn" onclick="revealRealCorrectAnswers()" style="display: none; padding: 12px 32px; background: var(--accent-color); color: white; border: none; border-radius: 25px; font-size: 15px; font-weight: 700; cursor: pointer;">
                     查看客观题答案 👁️
                 </button>
-                <div id="quizResultScore" style="margin-top: 15px; font-size: 16px; font-weight: bold; color: #2ecc71; display: none; line-height: 1.6;"></div>
+                <div id="quizResultScore" style="margin-top: 15px; font-size: 16px; font-weight: bold; color: var(--accent-color); display: none; line-height: 1.6;"></div>
             </div>
 
-            <!-- 二、简答题部分（带有 LocalStorage 自动保存草稿功能） -->
-            <div style="margin-top: 40px; padding-top: 25px; border-top: 3px solid #dfe6e9;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 2px dashed #bdc3c7; padding-bottom: 10px;">
-                    <h2 style="font-size: 20px; margin: 0; color: #2c3e50;">✍️ 二、简答题（主观题）</h2>
-                    <button onclick="clearEssayDrafts()" style="background: #e74c3c; color: white; border: none; padding: 4px 10px; border-radius: 12px; font-size: 11px; cursor: pointer;" title="清空所有简答题输入草稿">清空简答草稿 🗑️</button>
+            <div style="margin-top: 40px; padding-top: 25px; border-top: 3px solid rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 2px dashed var(--input-border); padding-bottom: 10px;">
+                    <h2 style="font-size: 20px; margin: 0; color: var(--text-color);">✍️ 二、简答题（主观题）</h2>
+                    <button onclick="clearEssayDrafts()" style="background: #ef4444; color: white; border: none; padding: 5px 12px; border-radius: 12px; font-size: 11px; font-weight: 600; cursor: pointer;" title="清空所有简答题输入草稿">清空简答草稿 🗑️</button>
                 </div>
                 <div id="essayContainer"></div>
             </div>
@@ -504,7 +521,7 @@
                 if (isAuthorLineAtEnd) {
                     paragraphElement.style.textIndent = "0";
                     paragraphElement.style.textAlign = "right";  
-                    paragraphElement.style.color = "#7f8c8d";    
+                    paragraphElement.style.color = "var(--text-muted)";    
                     paragraphElement.style.fontSize = "15px";     
                     paragraphElement.style.marginTop = "30px";    
                     cnt.appendChild(paragraphElement);
@@ -512,13 +529,13 @@
                     paragraphElement.style.position = "relative";
                     paragraphElement.style.textIndent = "2em"; 
                     paragraphElement.style.paddingLeft = "0"; 
-                    paragraphElement.style.marginBottom = "15px";
+                    paragraphElement.style.marginBottom = "25px";
                     
                     let s = document.createElement("span");
                     s.className = "p-index";
-                    s.innerText = "第" + pNum + "段";
+                    s.innerText = `第${pNum}段`;
                     s.style.position = "absolute";
-                    s.style.left = "-50px"; 
+                    s.style.left = "-55px"; 
                     s.style.top = "4px"; 
                     s.style.textIndent = "0"; 
                     
@@ -529,10 +546,6 @@
                         let pAnalysis = document.createElement("div");
                         pAnalysis.id = `p-analysis-${pNum}`;
                         pAnalysis.className = "teacher-p-analysis";
-                        pAnalysis.style.padding = "10px 15px"; 
-                        pAnalysis.style.margin = "5px 0 20px 0";
-                        pAnalysis.style.fontSize = "13px";
-                        pAnalysis.style.borderRadius = "4px";
                         pAnalysis.style.textIndent = "0";
                         pAnalysis.innerHTML = `<strong>🔍 第 ${pNum} 段文本赏析：</strong>${lessonTeacherAnalysis.paragraphs[pNum]}`;
                         
@@ -572,7 +585,7 @@
             container.innerHTML = "";
             
             if (typeof quizDataList === 'undefined' || quizDataList.length === 0) {
-                container.innerHTML = "<p style='color:#7f8c8d;'>暂无选择题数据</p>";
+                container.innerHTML = "<p style='color:var(--text-muted);'>暂无选择题数据</p>";
                 return;
             }
 
@@ -586,25 +599,21 @@
 
             quizDataList.forEach((q) => {
                 const qBox = document.createElement('div');
-                qBox.style.marginBottom = "20px";
-                qBox.style.paddingBottom = "15px";
-                qBox.style.borderBottom = "1px dashed #ddd";
+                qBox.style.marginBottom = "22px";
+                qBox.style.paddingBottom = "18px";
+                qBox.style.borderBottom = "1px dashed var(--input-border)";
                 qBox.setAttribute("data-q-id", q.id);
 
                 const qText = document.createElement('div');
-                qText.style.fontWeight = "bold";
-                qText.style.fontSize = "15px";
-                qText.style.marginBottom = "8px";
+                qText.style.fontWeight = "700";
+                qText.style.fontSize = "15.5px";
+                qText.style.marginBottom = "10px";
                 qText.innerHTML = `${q.id}. ${q.question.replace(/\n/g, '<br>')}`;
                 qBox.appendChild(qText);
 
                 if (q.teacherAnalysis) {
                     let qAnalysis = document.createElement("div");
                     qAnalysis.id = `q-analysis-${q.id}`;
-                    qAnalysis.style.padding = "8px 12px";
-                    qAnalysis.style.marginBottom = "10px";
-                    qAnalysis.style.fontSize = "12.5px";
-                    qAnalysis.style.borderRadius = "4px";
                     qAnalysis.innerHTML = `<strong>📐 设题意图与核心考点：</strong>${q.teacherAnalysis}`;
                     qAnalysis.style.display = isTeacherMode ? "block" : "none";
                     qBox.appendChild(qAnalysis);
@@ -630,11 +639,11 @@
                     btn.style.display = "block";
                     btn.style.width = "100%";
                     btn.style.textAlign = "left";
-                    btn.style.margin = "5px 0";
-                    btn.style.padding = "9px 12px";
-                    btn.style.borderRadius = "6px";
+                    btn.style.margin = "6px 0";
+                    btn.style.padding = "10px 14px";
+                    btn.style.borderRadius = "var(--radius-md)";
                     btn.style.cursor = "pointer";
-                    btn.style.fontSize = "13.5px";
+                    btn.style.fontSize = "14px";
 
                     btn.onclick = () => {
                         if (btn.disabled) return;
@@ -656,32 +665,27 @@
             container.innerHTML = "";
 
             if (typeof essayDataList === 'undefined' || essayDataList.length === 0) {
-                container.innerHTML = "<p style='color:#7f8c8d; font-size:13px;'>暂无简答题数据</p>";
+                container.innerHTML = "<p style='color:var(--text-muted); font-size:13px;'>暂无简答题数据</p>";
                 return;
             }
 
             essayDataList.forEach((essay) => {
                 const eBox = document.createElement('div');
                 eBox.style.marginBottom = "25px";
-                eBox.style.paddingBottom = "15px";
-                eBox.style.borderBottom = "1px dashed #ddd";
+                eBox.style.paddingBottom = "18px";
+                eBox.style.borderBottom = "1px dashed var(--input-border)";
                 eBox.setAttribute("data-essay-id", essay.id);
 
                 const eText = document.createElement('div');
-                eText.style.fontWeight = "bold";
-                eText.style.fontSize = "15px";
-                eText.style.marginBottom = "8px";
+                eText.style.fontWeight = "700";
+                eText.style.fontSize = "15.5px";
+                eText.style.marginBottom = "10px";
                 eText.innerHTML = `${essay.question}`;
                 eBox.appendChild(eText);
 
                 if (essay.teacherAnalysis) {
                     let eAnalysis = document.createElement("div");
                     eAnalysis.id = `essay-analysis-${essay.id}`;
-                    eAnalysis.className = "teacher-p-analysis";
-                    eAnalysis.style.padding = "8px 12px";
-                    eAnalysis.style.marginBottom = "10px";
-                    eAnalysis.style.fontSize = "12.5px";
-                    eAnalysis.style.borderRadius = "4px";
                     eAnalysis.innerHTML = `<strong>📐 考点与答题思路：</strong>${essay.teacherAnalysis}`;
                     eAnalysis.style.display = isTeacherMode ? "block" : "none";
                     eBox.appendChild(eAnalysis);
@@ -705,7 +709,7 @@
 
                 const toggleAnswerBtn = document.createElement('button');
                 toggleAnswerBtn.innerText = "👁️ 查看参考答案";
-                toggleAnswerBtn.style.cssText = "margin-top: 8px; padding: 5px 12px; background: #8e44ad; color: white; border: none; border-radius: 15px; font-size: 12px; cursor: pointer;";
+                toggleAnswerBtn.style.cssText = "margin-top: 10px; padding: 6px 14px; background: var(--ai-color); color: white; border: none; border-radius: 15px; font-size: 12.5px; font-weight: 600; cursor: pointer; transition: opacity 0.2s;";
                 
                 const answerBox = document.createElement('div');
                 answerBox.className = "essay-answer-box";
@@ -742,7 +746,6 @@
             isTeacherMode = !isTeacherMode;
             const btn = document.getElementById('teacherToggleBtn');
             btn.innerText = isTeacherMode ? "❌ 关闭文本赏析" : "👁️ 文本赏析";
-            btn.style.background = isTeacherMode ? "#7d3c98" : "#9b59b6";
             
             const topAnalysis = document.getElementById('teacherArticleAnalysis');
             const topAnalysisContent = document.getElementById('teacherArticleAnalysisContent');
@@ -802,12 +805,12 @@
                     if (btn === selectedBtn && studentLetter === q.answer) {
                         if (!btn.innerText.includes("  (✅)")) btn.innerText += "  (✅)";
                         btn.classList.add('correct-answer-hint');
-                        btn.style.fontWeight = "bold";
+                        btn.style.fontWeight = "700";
                     }
                     if (btn === selectedBtn && studentLetter !== q.answer) {
-                        btn.style.background = "#e74c3c";
+                        btn.style.background = "#ef4444";
                         btn.style.color = "white";
-                        btn.style.borderColor = "#e74c3c";
+                        btn.style.borderColor = "#ef4444";
                         if (!btn.innerText.includes("  (❌️)")) btn.innerText += "  (❌️)";
                     }
                 });
@@ -817,7 +820,7 @@
 
             const resultBox = document.getElementById('quizResultScore');
             resultBox.style.display = "block";
-            resultBox.innerHTML = `🎉 客观题得分：<span style="font-size: 20px; color: #e67e22;">${score}</span> / ${totalQuestions} 分`;
+            resultBox.innerHTML = `🎉 客观题得分：<span style="font-size: 22px; color: var(--accent-color); font-weight: 800;">${score}</span> / ${totalQuestions} 分`;
             
             document.getElementById('submitQuizBtn').style.display = "none";
             document.getElementById('retryQuizBtn').style.display = "inline-block";
@@ -843,7 +846,7 @@
                     if (btnLetter === q.answer) {
                         let currentText = btn.innerText.replace("  (✅)", "").replace(" (✅)", "");
                         btn.innerText = currentText + "  (✅)";
-                        btn.style.fontWeight = "bold";
+                        btn.style.fontWeight = "700";
                         btn.classList.add('correct-answer-hint');
                     }
                 });
@@ -892,7 +895,7 @@
             const list = document.getElementById('notebookList'); 
             if (!list) return;
             if (saved.length === 0) { 
-                list.innerHTML = "<span style='color:#999; font-size:13px;'>点击正文词语 Copy 记录生词</span>"; 
+                list.innerHTML = "<span style='color:var(--text-muted); font-size:13px;'>点击正文词语 Copy 记录生词</span>"; 
             } else { 
                 list.innerHTML = ""; 
                 saved.forEach(idx => { 
@@ -924,13 +927,10 @@
 
                     const deleteBtn = document.createElement("span");
                     deleteBtn.innerText = "×";
-                    deleteBtn.style.color = "#e74c3c";
+                    deleteBtn.style.color = "#ef4444";
                     deleteBtn.style.fontWeight = "bold";
-                    deleteBtn.style.padding = "0 2px";
+                    deleteBtn.style.padding = "0 4px";
                     deleteBtn.style.cursor = "pointer";
-                    deleteBtn.style.borderRadius = "50%";
-                    deleteBtn.onmouseenter = () => { deleteBtn.style.background = "#fce4e4"; };
-                    deleteBtn.onmouseleave = () => { deleteBtn.style.background = "transparent"; };
                     deleteBtn.onclick = (e) => { e.stopPropagation(); removeSingleWordFromNotebook(idx); };
                     div.appendChild(deleteBtn);
 
@@ -1019,9 +1019,9 @@
             }); 
         }
 
-        function toggleTheme() { 
-            document.documentElement.setAttribute('data-theme', document.documentElement.getAttribute('data-theme')==='dark'?'':'dark'); 
-        }
+    function toggleTheme() { 
+        document.documentElement.setAttribute('data-theme', document.documentElement.getAttribute('data-theme')==='dark'?'':'dark'); 
+    }
     </script>
 </body>
 </html>
