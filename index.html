@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>华文智能互动学习阅读器 - 宣纸朱砂水墨风</title>
+    <title>华文智能互动学习阅读器 - 宣纸古铜金水墨风</title>
     <style>
         /* ==========================================================================
-           📜 宣纸底色 × 朱砂红点睛水墨风配色系统 (Xuan Paper & Cinnabar Red Theme)
+           📜 宣纸底色 × 古铜金温润水墨风配色系统 (Xuan Paper & Amber Gold Theme)
            ========================================================================== */
 
         :root {
-            /* 📜 日间模式：古籍宣纸微黄底色，护眼温润 */
+            /* 📜 日间模式：古籍宣纸微黄底色，极度护眼、温润舒适 */
             --bg-color: #f7f4eb;
             --bg-gradient: radial-gradient(circle at top right, #faf8f2 0%, #ede6d6 100%);
             --text-color: #1c1c1c;         /* 浓墨炭黑，清晰锐利 */
             --text-muted: #5c554b;         /* 淡墨辅助字 */
             --card-bg: #fffcf7;          /* 仿宣纸白卡片 */
             
-            /* 🔴 核心主色调与点睛色：朱砂红（按钮、核心强调、选中态、印章质感） */
-            --primary-color: #b91c1c;
-            --primary-hover: #991b1b;
+            /* 🏺 核心主色调与点睛色：温润古铜金（按钮、核心强调、选中态） */
+            --primary-color: #b45309;
+            --primary-hover: #92400e;
 
-            /* 🟤 生词本专用色：琥珀金褐底深棕字 */
+            /* 🟤 生词本专用色：古铜墨褐底深棕字 */
             --notebook-color: #78350f;
             --notebook-bg: #fef3c7;
 
@@ -29,11 +29,11 @@
             --ai-color: #0f5257;
             --ai-bg: #eaf4f4;
 
-            /* 🔴 正确/成功提示色：朱砂红 */
-            --accent-color: #b91c1c;
-            --accent-bg: #fde8e8;
+            /* 🟫 正确/成功提示色：古铜金 */
+            --accent-color: #b45309;
+            --accent-bg: #fef3c7;
 
-            --ruby-color: #92400e;         /* 拼音：古铜金，与朱砂极配 */
+            --ruby-color: #92400e;         /* 拼音：温润古铜金 */
             --input-border: #d4c5a9;       /* 宣纸质感边框 */
             --shadow-sm: 0 4px 6px -1px rgba(60, 50, 40, 0.06), 0 2px 4px -1px rgba(60, 50, 40, 0.03);
             --shadow-md: 0 15px 30px -5px rgba(60, 50, 40, 0.08), 0 8px 10px -6px rgba(60, 50, 40, 0.04);
@@ -41,7 +41,7 @@
             --radius-md: 10px;
         }
 
-        /* 🌙 暗黑模式：深夜墨纸配暗夜绯红（温润不刺眼） */
+        /* 🌙 暗黑模式：深夜墨纸配星光暖金（极其柔和护眼） */
         [data-theme="dark"] {
             --bg-color: #121619;
             --bg-gradient: radial-gradient(circle at top right, #1a2126 0%, #121619 100%);
@@ -49,8 +49,8 @@
             --text-muted: #a39e93;
             --card-bg: #192025;            /* 深夜墨纸卡片底 */
             
-            --primary-color: #f87171;      /* 优雅的暗夜绯红 */
-            --primary-hover: #fca5a5;
+            --primary-color: #fbbf24;      /* 温润星光金，绝不刺眼 */
+            --primary-hover: #f59e0b;
             
             --notebook-color: #fcd34d;
             --notebook-bg: rgba(252, 211, 77, 0.12);
@@ -58,8 +58,8 @@
             --ai-color: #5eead4;       /* 亮青黛 */
             --ai-bg: #0e2a2d;          /* 深空青幽底 */
 
-            --accent-color: #f87171;
-            --accent-bg: rgba(248, 113, 113, 0.15);
+            --accent-color: #fbbf24;
+            --accent-bg: rgba(251, 191, 36, 0.12);
             --ruby-color: #fbbf24;
             --input-border: #3b464f;
             --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
@@ -157,7 +157,7 @@
         }
 
         .clear-btn {
-            background: #991b1b;
+            background: #78350f;
             color: white;
             border: none;
             padding: 5px 14px;
@@ -232,7 +232,7 @@
             transition: all 0.2s;
         }
         .quiz-opt-btn:hover {
-            background: rgba(185, 28, 28, 0.06) !important;
+            background: rgba(180, 83, 9, 0.06) !important;
             border-color: var(--primary-color) !important;
             color: var(--primary-color) !important;
         }
@@ -291,7 +291,7 @@
 
         ruby { ruby-position: over; cursor: pointer; padding: 0 2px; border-radius: 4px; transition: all 0.2s ease; }
         ruby:hover, ruby.is-active { background: #fef3c7; color: #b45309; }
-        [data-theme="dark"] ruby:hover, [data-theme="dark"] ruby.is-active { background: #3e2723; color: #f87171; }
+        [data-theme="dark"] ruby:hover, [data-theme="dark"] ruby.is-active { background: #3e2723; color: #fbbf24; }
 
         #content rt {
             opacity: 0;
@@ -361,7 +361,7 @@
         .essay-textarea:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.15);
+            box-shadow: 0 0 0 3px rgba(180, 83, 9, 0.15);
         }
 
         /* 简答题参考答案容器 */
@@ -378,7 +378,7 @@
             line-height: 1.7;
         }
 
-        /* 🌟 文本赏析与考点解析（水墨风） */
+        /* 🌟 文本赏析与考点解析（温润古铜金水墨风） */
         .teacher-p-analysis, [id^="q-analysis-"], [id^="essay-analysis-"] {
             background: var(--ai-bg) !important;
             border-left: 4px solid var(--ai-color) !important;
@@ -391,7 +391,7 @@
             border: 1px solid var(--input-border);
         }
         [data-theme="dark"] .teacher-p-analysis, [data-theme="dark"] [id^="q-analysis-"], [data-theme="dark"] [id^="essay-analysis-"] {
-            color: #5eead4 !important;
+            color: #fbbf24 !important;
         }
 
         #teacherArticleAnalysis {
@@ -405,7 +405,7 @@
             border: 1px solid var(--input-border);
         }
         [data-theme="dark"] #teacherArticleAnalysis {
-            color: #5eead4 !important;
+            color: #fbbf24 !important;
         }
 
         @media (max-width: 1024px) {
