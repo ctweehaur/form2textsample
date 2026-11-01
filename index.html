@@ -41,27 +41,27 @@
             --radius-md: 10px;
         }
 
-        /* 🌙 暗黑模式：深夜墨纸配莹润竹青 */
+        /* 🌙 暗黑模式：深夜墨玉绿版（摒弃刺眼荧光绿，采用高级低饱和墨玉青） */
         [data-theme="dark"] {
-            --bg-color: #121619;
-            --bg-gradient: radial-gradient(circle at top right, #1a2126 0%, #121619 100%);
-            --text-color: #f3f0e6;         /* 仿宣纸米白字 */
-            --text-muted: #a39e93;
-            --card-bg: #192025;
+            --bg-color: #101412;
+            --bg-gradient: radial-gradient(circle at top right, #171f1b 0%, #101412 100%);
+            --text-color: #e5e7eb;         /* 柔和米白字 */
+            --text-muted: #9ca3af;
+            --card-bg: #18201c;            /* 深夜墨玉卡片底 */
             
-            --primary-color: #34d399;      /* 夜间竹青绿 */
-            --primary-hover: #6ee7b7;
+            --primary-color: #2dd4bf;      /* 优雅的青玉色，柔和不刺眼 */
+            --primary-hover: #5eead4;
             
-            --notebook-color: #34d399;
-            --notebook-bg: rgba(52, 211, 153, 0.12);
+            --notebook-color: #2dd4bf;
+            --notebook-bg: rgba(45, 212, 191, 0.12);
 
             --ai-color: #5eead4;       /* 亮青黛 */
-            --ai-bg: #0e2a2d;          /* 深空青幽底 */
+            --ai-bg: #132a28;          /* 深空青幽底 */
 
-            --accent-color: #34d399;
-            --accent-bg: rgba(52, 211, 153, 0.12);
+            --accent-color: #2dd4bf;
+            --accent-bg: rgba(45, 212, 191, 0.12);
             --ruby-color: #fbbf24;
-            --input-border: #3b464f;
+            --input-border: #2d3732;
             --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
             --shadow-md: 0 15px 30px -5px rgba(0, 0, 0, 0.6);
         }
@@ -82,10 +82,10 @@
             background: #b5a484;
         }
         [data-theme="dark"] ::-webkit-scrollbar-thumb {
-            background: #3b464f;
+            background: #2d3732;
         }
         [data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
-            background: #4f5d68;
+            background: #3f4e47;
         }
 
         body {
@@ -157,7 +157,7 @@
         }
 
         .clear-btn {
-            background: #065f46;
+            background: #047857;
             color: white;
             border: none;
             padding: 5px 14px;
@@ -291,7 +291,7 @@
 
         ruby { ruby-position: over; cursor: pointer; padding: 0 2px; border-radius: 4px; transition: all 0.2s ease; }
         ruby:hover, ruby.is-active { background: #fef3c7; color: #b45309; }
-        [data-theme="dark"] ruby:hover, [data-theme="dark"] ruby.is-active { background: #1b3830; color: #34d399; }
+        [data-theme="dark"] ruby:hover, [data-theme="dark"] ruby.is-active { background: #1b3830; color: #2dd4bf; }
 
         #content rt {
             opacity: 0;
@@ -329,8 +329,8 @@
         .pop-pinyin { font-size: 14px; color: var(--ruby-color); font-weight: 800; }
         .pop-box { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; margin-bottom: 10px; line-height: 1.5; font-weight: 600; }
         .pop-tag { font-size: 11px; font-weight: 800; color: white; padding: 2px 6px; border-radius: 4px; flex-shrink: 0; background: var(--primary-color); }
-        .pop-en { color: #047857; } .pop-en .pop-tag { background: #047857; }
-        .pop-bm { color: #5c554b; } .pop-bm .pop-tag { background: #5c554b; }
+        .pop-en { color: var(--primary-color); } .pop-en .pop-tag { background: var(--primary-color); }
+        .pop-bm { color: var(--text-muted); } .pop-bm .pop-tag { background: var(--text-muted); }
         .pop-footer { display: flex; justify-content: flex-end; margin-top: 15px; padding-top: 10px; border-top: 1px solid var(--input-border); }
         .pop-btn-copy { background: var(--primary-color); color: white; border: none; padding: 6px 16px; border-radius: var(--radius-md); font-size: 13px; cursor: pointer; font-weight: 800; transition: opacity 0.2s; }
         .pop-btn-copy:hover { opacity: 0.9; }
@@ -463,7 +463,7 @@
                 <button id="submitQuizBtn" onclick="submitAndShowWrongOnly()" style="padding: 12px 32px; background: var(--primary-color); color: white; border: none; border-radius: 25px; font-size: 15px; font-weight: 800; cursor: pointer; transition: opacity 0.2s;">
                     提交客观题检查 🚀
                 </button>
-                <button id="retryQuizBtn" onclick="retryQuizAnswers()" style="display: none; padding: 12px 32px; background: #5c554b; color: white; border: none; border-radius: 25px; font-size: 15px; font-weight: 800; cursor: pointer; margin-right: 10px;">
+                <button id="retryQuizBtn" onclick="retryQuizAnswers()" style="display: none; padding: 12px 32px; background: var(--text-muted); color: white; border: none; border-radius: 25px; font-size: 15px; font-weight: 800; cursor: pointer; margin-right: 10px;">
                     重新作答 🔄
                 </button>
                 <button id="showCorrectBtn" onclick="revealRealCorrectAnswers()" style="display: none; padding: 12px 32px; background: var(--primary-color); color: white; border: none; border-radius: 25px; font-size: 15px; font-weight: 800; cursor: pointer;">
@@ -475,7 +475,7 @@
             <div style="margin-top: 40px; padding-top: 25px; border-top: 3px solid var(--input-border);">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 2px dashed var(--input-border); padding-bottom: 10px;">
                     <h2 style="font-size: 20px; margin: 0; color: var(--text-color);">✍️ 二、简答题（主观题）</h2>
-                    <button onclick="clearEssayDrafts()" style="background: #5c554b; color: white; border: none; padding: 5px 12px; border-radius: 12px; font-size: 11.5px; font-weight: 700; cursor: pointer;" title="清空所有简答题输入草稿">清空简答草稿 🗑️</button>
+                    <button onclick="clearEssayDrafts()" style="background: var(--text-muted); color: white; border: none; padding: 5px 12px; border-radius: 12px; font-size: 11.5px; font-weight: 700; cursor: pointer;" title="清空所有简答题输入草稿">清空简答草稿 🗑️</button>
                 </div>
                 <div id="essayContainer"></div>
             </div>
